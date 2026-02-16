@@ -3,6 +3,7 @@ import { Cinzel, Manrope } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { RouteTransition } from "@/components/layout/route-transition";
 
 const cinzel = Cinzel({
   variable: "--font-display",
@@ -52,7 +53,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${cinzel.variable} ${manrope.variable} antialiased`}>
         <SiteHeader />
-        <main>{children}</main>
+        <main>
+          <RouteTransition>{children}</RouteTransition>
+        </main>
         <SiteFooter />
       </body>
     </html>
