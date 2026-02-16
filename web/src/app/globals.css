@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #070d19;
+  --foreground: #e7eefc;
+  --surface: #111a2d;
+  --surface-alt: #18253c;
+  --muted: #8f9fbc;
+  --accent: #52c7ff;
+  --accent-soft: #184d70;
+  --gold: #d1b46b;
+  --danger: #f26d6d;
+  --ring: #6fd2ff;
+  --radius: 16px;
+  --shadow-card: 0 14px 40px rgba(7, 13, 25, 0.45);
+  --font-display: "Cinzel", serif;
+  --font-body: "Manrope", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+}
+
+* {
+  border-color: color-mix(in oklab, var(--surface-alt) 70%, white 10%);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(82, 199, 255, 0.14), transparent 32%),
+    radial-gradient(circle at 82% 0%, rgba(209, 180, 107, 0.12), transparent 28%),
+    linear-gradient(180deg, #070d19, #0a1222 40%, #050912);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+}
+
+.container-page {
+  width: min(1120px, 92vw);
+  margin-inline: auto;
+}
+
+.surface {
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--surface) 92%, transparent),
+    color-mix(in oklab, var(--surface-alt) 86%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, var(--surface-alt) 68%, white 8%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+.rune-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.rune-hover::after {
+  content: "";
+  position: absolute;
+  inset: -100% -20%;
+  background: radial-gradient(circle, rgba(82, 199, 255, 0.2), transparent 35%);
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+.rune-hover:hover::after {
+  opacity: 1;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.fancy-border {
+  border: 1px solid color-mix(in oklab, var(--gold) 38%, transparent);
+}
+
+.page-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.parallax-layer {
+  transform: translateZ(0);
+  animation: float 9s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    animation: none;
+  }
+}
