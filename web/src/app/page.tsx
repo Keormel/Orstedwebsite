@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { DiscordEmbed } from "@/components/discord-embed";
 import { MinecraftStatusCard } from "@/components/minecraft-status-card";
 import { TrailerGallery } from "@/components/trailer-gallery";
+import { Reveal } from "@/components/ui/reveal";
 import {
   CategoryIcon,
   DaggerIcon,
@@ -52,7 +53,8 @@ export default async function HomePage() {
 
   return (
     <div className="pb-20">
-      <section className="container-page grid gap-6 py-12 md:grid-cols-[1.4fr_1fr] md:py-16">
+      <Reveal>
+        <section className="container-page grid gap-6 py-12 md:grid-cols-[1.4fr_1fr] md:py-16">
         <div className="surface relative overflow-hidden p-8 md:p-10">
           <div className="parallax-layer absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[#2aaee644] blur-3xl" />
           <Badge tone="gold">Minecraft RPG сервер</Badge>
@@ -79,9 +81,11 @@ export default async function HomePage() {
           </div>
         </div>
         <MinecraftStatusCard />
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page py-6">
+      <Reveal delayMs={60}>
+        <section className="container-page py-6">
         <h2 className="text-3xl">Что это за сервер</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {[
@@ -93,9 +97,11 @@ export default async function HomePage() {
             <Card key={point} description={point} />
           ))}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page py-8">
+      <Reveal delayMs={90}>
+        <section className="container-page py-8">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-3xl">Классы</h2>
           <Link href="/classes" className="text-sm text-[var(--accent)]">
@@ -121,9 +127,11 @@ export default async function HomePage() {
             );
           })}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page py-8">
+      <Reveal delayMs={120}>
+        <section className="container-page py-8">
         <h2 className="text-3xl">Прогресс и система</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <Card
@@ -139,9 +147,11 @@ export default async function HomePage() {
             description="Еженедельные осады, мировые боссы и турнирные уикенды."
           />
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page py-8">
+      <Reveal delayMs={150}>
+        <section className="container-page py-8">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-3xl">Последние новости</h2>
           <Link href="/news" className="text-sm text-[var(--accent)]">
@@ -158,16 +168,20 @@ export default async function HomePage() {
             </Card>
           ))}
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page py-8">
+      <Reveal delayMs={180}>
+        <section className="container-page py-8">
         <h2 className="text-3xl">Трейлер и галерея</h2>
         <div className="mt-4">
           <TrailerGallery />
         </div>
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page grid gap-4 py-8 md:grid-cols-2 lg:grid-cols-4">
+      <Reveal delayMs={210}>
+        <section className="container-page grid gap-4 py-8 md:grid-cols-2 lg:grid-cols-4">
         {categoryLabels.map((label) => (
           <div
             key={label}
@@ -177,15 +191,18 @@ export default async function HomePage() {
             <span>{label}</span>
           </div>
         ))}
-      </section>
+        </section>
+      </Reveal>
 
-      <section className="container-page grid gap-4 py-8 md:grid-cols-2">
+      <Reveal delayMs={240}>
+        <section className="container-page grid gap-4 py-8 md:grid-cols-2">
         <div>
           <h2 className="mb-4 text-3xl">FAQ</h2>
           <Accordion items={faq} />
         </div>
         <DiscordEmbed />
-      </section>
+        </section>
+      </Reveal>
     </div>
   );
 }

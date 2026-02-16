@@ -22,7 +22,11 @@ export function SiteHeader() {
         </Link>
         <nav className="flex flex-wrap gap-2 text-sm">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-muted hover:text-white">
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-md px-3 py-2 text-muted transition-colors duration-200 hover:text-white hover:[text-shadow:0_0_16px_rgba(82,199,255,0.45)]"
+            >
               {item.label}
             </Link>
           ))}

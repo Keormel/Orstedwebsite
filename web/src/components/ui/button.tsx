@@ -24,7 +24,7 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const classes =
-    `inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 rune-hover ${styles[variant]} ${className}`.trim();
+    `btn-arcane inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 rune-hover ${styles[variant]} ${className}`.trim();
 
   if (!href) {
     return <button className={classes}>{children}</button>;
