@@ -4,7 +4,7 @@ import { SERVER } from "@/lib/constants";
 export function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-[#2a3c5a88]">
-      <div className="container-page grid gap-8 py-10 md:grid-cols-3">
+      <div className="container-page grid gap-8 py-8 sm:py-10 md:grid-cols-3">
         <div>
           <p className="text-xl font-semibold">{SERVER.name}</p>
           <p className="mt-2 text-sm text-muted">

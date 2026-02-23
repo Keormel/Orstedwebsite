@@ -16,8 +16,8 @@ export default async function NewsPage() {
   const posts = await getNewsPosts();
 
   return (
-    <div className="container-page space-y-8 py-12">
-      <header className="surface p-8">
+    <div className="container-page space-y-6 py-8 sm:space-y-8 sm:py-12">
+      <header className="surface p-5 sm:p-8">
         <h1 className="page-title">Новости и патчноуты</h1>
         <p className="mt-3 text-muted">
           Контент публикуется через Strapi. Поддерживаются SEO-friendly URL по slug.
@@ -34,7 +34,7 @@ export default async function NewsPage() {
       <section className="grid gap-4 md:grid-cols-2">
         {posts.map((post) => (
           <Card key={post.id} title={post.title} description={post.summary}>
-            <div className="flex items-center justify-between text-xs text-muted">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
               <Badge tone="accent">{post.tag}</Badge>
               <time>{new Date(post.publishedAt).toLocaleDateString("ru-RU")}</time>
             </div>

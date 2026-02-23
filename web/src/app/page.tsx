@@ -54,8 +54,8 @@ export default async function HomePage() {
   return (
     <div className="pb-20">
       <Reveal>
-        <section className="container-page grid gap-6 py-12 md:grid-cols-[1.4fr_1fr] md:py-16">
-        <div className="surface relative overflow-hidden p-8 md:p-10">
+        <section className="container-page grid gap-6 py-8 sm:py-12 md:grid-cols-[1.4fr_1fr] md:py-16">
+        <div className="surface relative overflow-hidden p-5 sm:p-8 md:p-10">
           <div className="parallax-layer absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[#2aaee644] blur-3xl" />
           <Badge tone="gold">Minecraft RPG сервер</Badge>
           <h1 className="page-title mt-5 max-w-2xl">{SERVER.name}</h1>
@@ -86,7 +86,7 @@ export default async function HomePage() {
 
       <Reveal delayMs={60}>
         <section className="container-page py-6">
-        <h2 className="text-3xl">Что это за сервер</h2>
+        <h2 className="text-2xl sm:text-3xl">Что это за сервер</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {[
             "Классовая RPG система с ветками развития и билдами.",
@@ -102,8 +102,8 @@ export default async function HomePage() {
 
       <Reveal delayMs={90}>
         <section className="container-page py-8">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-3xl">Классы</h2>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-2xl sm:text-3xl">Классы</h2>
           <Link href="/classes" className="text-sm text-[var(--accent)]">
             Открыть все классы
           </Link>
@@ -132,7 +132,7 @@ export default async function HomePage() {
 
       <Reveal delayMs={120}>
         <section className="container-page py-8">
-        <h2 className="text-3xl">Прогресс и система</h2>
+        <h2 className="text-2xl sm:text-3xl">Прогресс и система</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <Card
             title="Сезоны"
@@ -152,8 +152,8 @@ export default async function HomePage() {
 
       <Reveal delayMs={150}>
         <section className="container-page py-8">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-3xl">Последние новости</h2>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-2xl sm:text-3xl">Последние новости</h2>
           <Link href="/news" className="text-sm text-[var(--accent)]">
             Все публикации
           </Link>
@@ -161,7 +161,7 @@ export default async function HomePage() {
         <div className="grid gap-4 md:grid-cols-3">
           {news.slice(0, 3).map((post) => (
             <Card key={post.id} title={post.title} description={post.summary}>
-              <div className="flex items-center justify-between text-xs text-muted">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
                 <Badge tone="muted">{post.tag}</Badge>
                 <time>{new Date(post.publishedAt).toLocaleDateString("ru-RU")}</time>
               </div>
@@ -173,7 +173,7 @@ export default async function HomePage() {
 
       <Reveal delayMs={180}>
         <section className="container-page py-8">
-        <h2 className="text-3xl">Трейлер и галерея</h2>
+        <h2 className="text-2xl sm:text-3xl">Трейлер и галерея</h2>
         <div className="mt-4">
           <TrailerGallery />
         </div>

@@ -28,7 +28,7 @@ export function TrailerGallery() {
       <div className="grid gap-4 md:grid-cols-3">
         {gallery.map((item) => (
           <Card key={item.title} className="overflow-hidden p-0">
-            <Image src={item.src} alt={item.title} width={1200} height={800} className="h-44 w-full object-cover" />
+            <Image src={item.src} alt={item.title} width={1200} height={800} className="h-40 w-full object-cover sm:h-44" />
             <div className="p-4">
               <p className="text-sm">{item.title}</p>
             </div>
@@ -37,7 +37,7 @@ export function TrailerGallery() {
       </div>
       <button
         onClick={() => setOpen(true)}
-        className="mt-4 rounded-xl border border-[#5cc9f7] bg-[#10324f] px-5 py-3 text-sm font-semibold"
+        className="mt-4 w-full rounded-xl border border-[#5cc9f7] bg-[#10324f] px-5 py-3 text-sm font-semibold sm:w-auto"
       >
         Смотреть трейлер
       </button>

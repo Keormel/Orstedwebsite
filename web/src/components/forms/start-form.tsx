@@ -38,8 +38,8 @@ export function StartForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="surface space-y-3 p-6">
-      <h3 className="text-xl">Запросить помощь на старте</h3>
+    <form onSubmit={onSubmit} className="surface space-y-3 p-5 sm:p-6">
+      <h3 className="text-lg sm:text-xl">Запросить помощь на старте</h3>
       <p className="text-sm text-muted">Оставь ник и Discord. Ментор напишет в течение суток.</p>
       <input
         required
@@ -67,7 +67,7 @@ export function StartForm() {
       <button
         type="submit"
         disabled={state.loading}
-        className="rounded-xl border border-[#80dcff] bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-[#041220] disabled:opacity-70"
+        className="w-full rounded-xl border border-[#80dcff] bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-[#041220] disabled:opacity-70 sm:w-auto"
       >
         {state.loading ? "Отправка..." : "Отправить"}
       </button>

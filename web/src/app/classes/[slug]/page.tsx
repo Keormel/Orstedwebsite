@@ -31,10 +31,10 @@ export default async function ClassDetailsPage({ params }: Props) {
   if (!classInfo) notFound();
 
   return (
-    <div className="container-page space-y-8 py-12">
-      <header className="surface p-8">
+    <div className="container-page space-y-6 py-8 sm:space-y-8 sm:py-12">
+      <header className="surface p-5 sm:p-8">
         <Badge>{classInfo.path}</Badge>
-        <h1 className="mt-4 text-5xl">{classInfo.name}</h1>
+        <h1 className="mt-4 text-3xl sm:text-5xl">{classInfo.name}</h1>
         <p className="mt-3 max-w-3xl text-muted">{classInfo.tagline}</p>
       </header>
 
@@ -57,7 +57,7 @@ export default async function ClassDetailsPage({ params }: Props) {
         </Card>
       </section>
 
-      <section className="surface p-6">
+      <section className="surface p-5 sm:p-6">
         <h2 className="text-3xl">Примеры билдов</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {classInfo.builds.map((build) => (
@@ -68,7 +68,7 @@ export default async function ClassDetailsPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="surface p-6">
+      <section className="surface p-5 sm:p-6">
         <h2 className="text-3xl">Ключевые навыки</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {classInfo.skills.map((skill) => (

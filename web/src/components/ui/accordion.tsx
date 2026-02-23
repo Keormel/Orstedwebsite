@@ -19,9 +19,9 @@ export function Accordion({ items }: AccordionProps) {
       {items.map((item, idx) => {
         const isOpen = openIndex === idx;
         return (
-          <div key={item.q} className="surface p-4">
+          <div key={item.q} className="surface p-4 sm:p-5">
             <button
-              className="flex w-full items-center justify-between gap-4 text-left text-base font-semibold"
+              className="flex w-full items-center justify-between gap-4 text-left text-sm font-semibold sm:text-base"
               onClick={() => setOpenIndex(isOpen ? null : idx)}
             >
               <span>{item.q}</span>

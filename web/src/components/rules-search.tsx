@@ -36,8 +36,8 @@ export function RulesSearch({ sections }: RulesSearchProps) {
       />
       <div className="space-y-5">
         {filtered.map((section) => (
-          <section key={section.id} id={section.id} className="surface p-5">
-            <h2 className="text-2xl">{section.title}</h2>
+          <section key={section.id} id={section.id} className="surface p-4 sm:p-5">
+            <h2 className="text-xl sm:text-2xl">{section.title}</h2>
             <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-muted">
               {section.items.map((item) => (
                 <li key={item}>{item}</li>

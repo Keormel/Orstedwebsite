@@ -48,8 +48,8 @@ const sections: RuleSection[] = [
 
 export default function RulesPage() {
   return (
-    <div className="container-page space-y-8 py-12">
-      <header className="surface p-8">
+    <div className="container-page space-y-6 py-8 sm:space-y-8 sm:py-12">
+      <header className="surface p-5 sm:p-8">
         <h1 className="page-title">Правила сервера</h1>
         <p className="mt-3 max-w-3xl text-muted">
           Используй поиск и якоря для быстрого доступа к нужному разделу.

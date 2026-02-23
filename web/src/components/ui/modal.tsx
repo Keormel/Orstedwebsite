@@ -26,11 +26,19 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#02060fcc] p-4"
       onClick={onClose}
     >
-      <div className="surface max-h-[90vh] w-full max-w-3xl overflow-auto p-6" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="surface max-h-[90vh] w-full max-w-3xl overflow-auto p-4 sm:p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">{title}</h3>
-          <button onClick={onClose} className="text-xl text-muted hover:text-white">
-            ×
+          <h3 className="text-xl sm:text-2xl">{title}</h3>
+          <button
+            type="button"
+            aria-label="Close modal"
+            onClick={onClose}
+            className="text-xl text-muted hover:text-white"
+          >
+            &times;
           </button>
         </div>
         {children}

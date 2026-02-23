@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function LorePage() {
   return (
-    <div className="container-page space-y-8 py-12">
-      <header className="surface p-8">
+    <div className="container-page space-y-6 py-8 sm:space-y-8 sm:py-12">
+      <header className="surface p-5 sm:p-8">
         <h1 className="page-title">Лор и мир</h1>
         <p className="mt-3 max-w-3xl text-muted">
           Континент разделен между магическими домами и гильдиями приключенцев.
@@ -35,7 +35,7 @@ export default function LorePage() {
         />
       </section>
 
-      <section className="surface p-6">
+      <section className="surface p-5 sm:p-6">
         <h2 className="text-3xl">Карта мира</h2>
         <p className="mt-3 text-sm text-muted">
           Открой интерактивную карту Dynmap/BlueMap для городов, дорог, фронтов и
@@ -44,7 +44,7 @@ export default function LorePage() {
         <div className="mt-4">
           <Button href={SERVER.dynmapUrl}>Открыть карту</Button>
         </div>
-        <div className="mt-6 aspect-[16/7] overflow-hidden rounded-xl border border-[#304464]">
+        <div className="mt-6 aspect-[4/3] overflow-hidden rounded-xl border border-[#304464] sm:aspect-[16/7]">
           <iframe
             src={SERVER.dynmapUrl}
             title="Map embed"
