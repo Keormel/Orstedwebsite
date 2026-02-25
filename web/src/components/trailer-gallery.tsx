@@ -12,7 +12,7 @@ const gallery = [
   },
   {
     title: "Гильдия Приключенцев",
-    src: "https://images.unsplash.com/photo-1579370318443-8da81645784a?auto=format&fit=crop&w=1200&q=80",
+    src: "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Ледяной Север",
