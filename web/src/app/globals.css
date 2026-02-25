@@ -13,8 +13,8 @@
   --ring: #6fd2ff;
   --radius: 16px;
   --shadow-card: 0 14px 40px rgba(7, 13, 25, 0.45);
-  --font-display: "Cinzel", serif;
-  --font-body: "Manrope", sans-serif;
+  --font-display: "Prata", "Times New Roman", serif;
+  --font-body: "PT Serif", Georgia, serif;
 }
 
 @theme inline {
@@ -32,14 +32,35 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
   min-height: 100vh;
+  line-height: 1.65;
+  letter-spacing: 0.004em;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
   background-image:
     radial-gradient(circle at 20% 15%, rgba(82, 199, 255, 0.14), transparent 32%),
     radial-gradient(circle at 82% 0%, rgba(209, 180, 107, 0.12), transparent 28%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.015) 0,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
     linear-gradient(180deg, #070d19, #0a1222 40%, #050912);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 58%, white 8%);
+  color: #03101f;
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 74%, white 14%);
+  outline-offset: 2px;
 }
 
 .site-header {
@@ -121,6 +142,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
@@ -209,6 +231,37 @@ a {
 .page-title {
   font-size: clamp(2rem, 6vw, 3.5rem);
   line-height: 1.1;
+}
+
+.lead-print {
+  font-size: clamp(1.02rem, 1.25vw, 1.14rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.lead-print::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  color: color-mix(in oklab, var(--gold) 74%, white 5%);
+  font-family: var(--font-display);
+  font-size: 2.8em;
+  line-height: 0.78;
+}
+
+.innovation-tile {
+  border: 1px solid color-mix(in oklab, var(--accent) 26%, #2f4568);
+  border-radius: 14px;
+  background: linear-gradient(150deg, rgba(16, 35, 56, 0.86), rgba(11, 24, 40, 0.92));
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.innovation-tile:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--gold) 52%, var(--accent));
+  box-shadow: 0 10px 28px rgba(6, 13, 24, 0.45);
 }
 
 .parallax-layer {

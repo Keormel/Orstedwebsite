@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Cinzel, Manrope } from "next/font/google";
+import { Prata, PT_Serif } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { ScrollTopButton } from "@/components/layout/scroll-top-button";
 import { RouteTransition } from "@/components/layout/route-transition";
 
-const cinzel = Cinzel({
+const prata = Prata({
   variable: "--font-display",
-  subsets: ["latin", "latin-ext"],
-  weight: ["500", "700"],
+  subsets: ["latin", "cyrillic"],
+  weight: ["400"],
 });
 
-const manrope = Manrope({
+const ptSerif = PT_Serif({
   variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -51,11 +52,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${cinzel.variable} ${manrope.variable} antialiased`}>
+      <body className={`${prata.variable} ${ptSerif.variable} antialiased`}>
         <SiteHeader />
         <main>
           <RouteTransition>{children}</RouteTransition>
         </main>
+        <ScrollTopButton />
         <SiteFooter />
       </body>
     </html>

@@ -24,19 +24,25 @@ export const metadata: Metadata = {
     "Вступай на RPG Minecraft сервер по вселенной Mushoku Tensei. Быстрый старт за 3 шага.",
 };
 
-const categoryLabels = [
-  "Билды",
-  "Квесты",
-  "Питомцы",
-  "Ремесло",
-  "Рейтинг",
-  "Сезоны",
-  "Арены",
-  "Руны",
-  "Титулы",
-  "Академия",
-  "Гильдии",
-  "Осады",
+const projectPillars = [
+  {
+    title: "Ролевая глубина",
+    description:
+      "Классы, ветки развития и сценарии прохождения формируют уникальный стиль игры.",
+    icon: SparkIcon,
+  },
+  {
+    title: "Честный прогресс",
+    description:
+      "Результат зависит от активности в игре, а не от доната. PvP остаётся конкурентным.",
+    icon: ShieldIcon,
+  },
+  {
+    title: "Живое сообщество",
+    description:
+      "Объединения гильдий, совместные события и голосовые активности создают динамику каждый вечер.",
+    icon: SwordIcon,
+  },
 ];
 
 const classIcons = {
@@ -45,6 +51,24 @@ const classIcons = {
   assassin: DaggerIcon,
   mage: SparkIcon,
 };
+
+const siteInnovations = [
+  {
+    title: "Печатная типографика",
+    description: "Новый более книжный шрифт с улучшенной читаемостью на длинных текстах.",
+    icon: SparkIcon,
+  },
+  {
+    title: "Кнопка быстрого возврата",
+    description: "После прокрутки появляется удобная кнопка для мгновенного возврата наверх.",
+    icon: ShieldIcon,
+  },
+  {
+    title: "Блок нововведений",
+    description: "Ключевые изменения интерфейса вынесены в отдельную заметную секцию.",
+    icon: CategoryIcon,
+  },
+];
 
 export default async function HomePage() {
   const classes = await getClasses();
@@ -59,7 +83,7 @@ export default async function HomePage() {
           <div className="parallax-layer absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[#2aaee644] blur-3xl" />
           <Badge tone="gold">Minecraft RPG сервер</Badge>
           <h1 className="page-title mt-5 max-w-2xl">{SERVER.name}</h1>
-          <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
+          <p className="lead-print mt-4 max-w-2xl text-muted">
             {SERVER.slogan}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -81,6 +105,31 @@ export default async function HomePage() {
           </div>
         </div>
         <MinecraftStatusCard />
+        </section>
+      </Reveal>
+
+      <Reveal delayMs={40}>
+        <section className="container-page py-4 sm:py-6">
+          <div className="surface p-5 sm:p-7">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="text-2xl sm:text-3xl">Нововведения</h2>
+              <Badge tone="accent">UI Update</Badge>
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {siteInnovations.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article key={item.title} className="innovation-tile p-4">
+                    <div className="inline-flex rounded-lg border border-[#3a5d84] bg-[#0d2136] p-2 text-[var(--accent)]">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <p className="mt-3 text-base text-white">{item.title}</p>
+                    <p className="mt-1 text-sm text-muted">{item.description}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </section>
       </Reveal>
 
@@ -181,16 +230,27 @@ export default async function HomePage() {
       </Reveal>
 
       <Reveal delayMs={210}>
-        <section className="container-page grid gap-4 py-8 md:grid-cols-2 lg:grid-cols-4">
-        {categoryLabels.map((label) => (
-          <div
-            key={label}
-            className="fancy-border flex items-center gap-2 rounded-lg bg-[#0b1629] px-3 py-2 text-sm"
-          >
-            <CategoryIcon className="h-4 w-4 text-[var(--gold)]" />
-            <span>{label}</span>
+        <section className="container-page py-8">
+        <div className="surface p-5 sm:p-7">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-2xl sm:text-3xl">Что делает сервер особенным</h2>
+            <Badge tone="gold">Обновлено</Badge>
           </div>
-        ))}
+          <div className="grid gap-3 md:grid-cols-3">
+            {projectPillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <article key={pillar.title} className="fancy-border rounded-xl bg-[#0b1629] p-4">
+                  <div className="inline-flex rounded-lg border border-[#2f4568] bg-[#0d2136] p-2 text-[var(--gold)]">
+                    <Icon className="h-4 w-4" />
+                  </div>
+                  <p className="mt-3 text-base text-white">{pillar.title}</p>
+                  <p className="mt-1 text-sm text-muted">{pillar.description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
         </section>
       </Reveal>
 
