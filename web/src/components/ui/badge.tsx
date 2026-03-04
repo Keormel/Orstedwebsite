@@ -7,9 +7,9 @@ type BadgeProps = {
 
 export function Badge({ children, tone = "accent" }: BadgeProps) {
   const colorMap = {
-    accent: "text-[#c8f0ff] border-[#4ebee9] bg-[#0f2a3d]",
-    gold: "text-[#f4e7c6] border-[#b5954e] bg-[#2a2415]",
-    muted: "text-[#cad4e8] border-[#415270] bg-[#111c30]",
+    accent: "text-[#dbfff7] border-[#3ab79a] bg-[#103734]",
+    gold: "text-[#deefff] border-[#4c87ba] bg-[#12283a]",
+    muted: "text-[#d2e7eb] border-[#3c6271] bg-[#13262d]",
   };
 
   return (

@@ -10,8 +10,8 @@ type CardProps = {
 export function Card({ title, description, children, className = "" }: CardProps) {
   return (
     <article className={`surface rune-hover p-5 sm:p-6 ${className}`.trim()}>
-      {title ? <h3 className="text-lg font-semibold sm:text-xl">{title}</h3> : null}
-      {description ? <p className="mt-2 text-sm text-muted">{description}</p> : null}
+      {title ? <h3 className="text-lg font-semibold leading-tight sm:text-xl">{title}</h3> : null}
+      {description ? <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p> : null}
       {children ? <div className="mt-4">{children}</div> : null}
     </article>
   );

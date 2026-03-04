@@ -72,20 +72,18 @@ export function SiteHeader() {
   };
 
   return (
-    <header
-      className={`site-header sticky top-0 z-40 border-b border-[#2a3c5a88] bg-[#050b19d9] backdrop-blur ${scrolled ? "site-header-scrolled" : ""}`}
-    >
+    <header className={`site-header sticky top-0 z-40 backdrop-blur ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="site-header-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
       <div className="container-page py-3">
         <div className="flex items-center justify-between gap-3">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-base font-bold tracking-wide transition-[letter-spacing,text-shadow] duration-300 hover:tracking-[0.06em] hover:[text-shadow:0_0_18px_rgba(82,199,255,0.45)] sm:text-lg"
+            className="inline-flex min-h-11 items-center text-base font-bold tracking-[0.02em] transition-[letter-spacing,text-shadow] duration-300 hover:tracking-[0.04em] hover:[text-shadow:0_0_18px_rgba(87,184,255,0.32)] sm:text-lg"
           >
             {SERVER.name}
           </Link>
-          <nav className="hidden flex-wrap gap-2 text-sm md:flex">
+          <nav className="hidden flex-wrap gap-1.5 text-sm md:flex" aria-label="Основная навигация">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -96,15 +94,15 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <Button href={SERVER.discordInvite} variant="secondary" className="hidden px-4 py-2 text-xs md:inline-flex">
-            Discord
+          <Button href={SERVER.discordInvite} variant="secondary" className="hidden px-4 text-sm md:inline-flex">
+            Discord-сообщество
           </Button>
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-site-nav"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#304464] bg-[#0b1528] text-[#dce7f8] transition-colors hover:border-[var(--accent)] hover:text-white md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#36595f] bg-[#10282d] text-[#d5fff4] transition-colors hover:border-[var(--accent)] hover:text-white md:hidden"
             onClick={() => setMobileMenuOpen((value) => !value)}
           >
             <span className="sr-only">Toggle navigation</span>
@@ -125,20 +123,20 @@ export function SiteHeader() {
           id="mobile-site-nav"
           className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 md:hidden ${mobileMenuOpen ? "mt-3 max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}
         >
-          <nav className="grid gap-1 rounded-xl border border-[#304464] bg-[#0b1528] p-2 text-sm">
+          <nav className="grid gap-1 rounded-xl border border-[#36595f] bg-[#10282d] p-2 text-sm">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`rounded-lg px-3 py-2 transition-colors ${isActive(item.href) ? "bg-[#12314b] text-white" : "text-[var(--muted)] hover:bg-[#101f37] hover:text-white"}`}
+                className={`rounded-lg px-3 py-2.5 transition-colors ${isActive(item.href) ? "bg-[#1e4f4a] text-white" : "text-[var(--muted)] hover:bg-[#19373c] hover:text-white"}`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <Button href={SERVER.discordInvite} variant="secondary" className="mt-2 w-full justify-center py-2 text-xs">
-            Discord
+          <Button href={SERVER.discordInvite} variant="secondary" className="mt-2 w-full justify-center text-sm">
+            Discord-сообщество
           </Button>
         </div>
       </div>

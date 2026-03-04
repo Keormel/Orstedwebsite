@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { SERVER } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Лор / Мир",
@@ -38,18 +37,17 @@ export default function LorePage() {
       <section className="surface p-5 sm:p-6">
         <h2 className="text-3xl">Карта мира</h2>
         <p className="mt-3 text-sm text-muted">
-          Открой интерактивную карту Dynmap/BlueMap для городов, дорог, фронтов и
-          ресурсов.
+          Ниже отображается наша карта мира в PNG-формате. Можно заменить файл
+          `web/public/assets/world-map.png` на актуальную версию без изменений в коде.
         </p>
-        <div className="mt-4">
-          <Button href={SERVER.dynmapUrl}>Открыть карту</Button>
-        </div>
-        <div className="mt-6 aspect-[4/3] overflow-hidden rounded-xl border border-[#304464] sm:aspect-[16/7]">
-          <iframe
-            src={SERVER.dynmapUrl}
-            title="Map embed"
-            className="h-full w-full"
-            loading="lazy"
+        <div className="mt-6 overflow-hidden rounded-xl border border-[#2f6360]">
+          <Image
+            src="/assets/world-map.png"
+            alt="Карта мира Mushoku Reincarnation"
+            width={1920}
+            height={1080}
+            className="h-auto w-full object-cover"
+            priority
           />
         </div>
       </section>

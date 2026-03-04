@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Prata, PT_Serif } from "next/font/google";
+import { Exo_2, Unbounded } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ScrollTopButton } from "@/components/layout/scroll-top-button";
 import { RouteTransition } from "@/components/layout/route-transition";
 
-const prata = Prata({
+const unbounded = Unbounded({
   variable: "--font-display",
   subsets: ["latin", "cyrillic"],
-  weight: ["400"],
+  weight: ["500", "700"],
 });
 
-const ptSerif = PT_Serif({
+const exo2 = Exo_2({
   variable: "--font-body",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${prata.variable} ${ptSerif.variable} antialiased`}>
+      <body className={`${unbounded.variable} ${exo2.variable} antialiased`}>
         <SiteHeader />
         <main>
           <RouteTransition>{children}</RouteTransition>

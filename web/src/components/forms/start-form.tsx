@@ -47,7 +47,7 @@ export function StartForm() {
         maxLength={24}
         name="nickname"
         placeholder="Ник в Minecraft"
-        className="w-full rounded-lg border border-[#2f4465] bg-[#081224] px-3 py-2 text-sm outline-none focus:border-[var(--ring)]"
+        className="field-base"
       />
       <input
         required
@@ -55,19 +55,19 @@ export function StartForm() {
         maxLength={64}
         name="discord"
         placeholder="Discord (пример: user#0001)"
-        className="w-full rounded-lg border border-[#2f4465] bg-[#081224] px-3 py-2 text-sm outline-none focus:border-[var(--ring)]"
+        className="field-base"
       />
       <textarea
         name="notes"
         maxLength={400}
         placeholder="Вопросы по сборке / классу / старту"
-        className="min-h-24 w-full rounded-lg border border-[#2f4465] bg-[#081224] px-3 py-2 text-sm outline-none focus:border-[var(--ring)]"
+        className="field-base min-h-24"
       />
       <input name="website" className="hidden" tabIndex={-1} autoComplete="off" />
       <button
         type="submit"
         disabled={state.loading}
-        className="w-full rounded-xl border border-[#80dcff] bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-[#041220] disabled:opacity-70 sm:w-auto"
+        className="w-full rounded-xl border border-[#8af4d8] bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-[#032019] disabled:opacity-70 sm:w-auto"
       >
         {state.loading ? "Отправка..." : "Отправить"}
       </button>

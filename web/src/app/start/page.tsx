@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { StartForm } from "@/components/forms/start-form";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SERVER } from "@/lib/constants";
@@ -40,7 +39,7 @@ export default function StartPage() {
         </Card>
         <Card title="2. Добавление IP">
           <p className="text-sm text-muted">Открой Multiplayer и добавь сервер:</p>
-          <code className="mt-3 inline-flex rounded bg-[#081224] px-2 py-1 text-sm">
+          <code className="mt-3 inline-flex rounded bg-[#0e2a2d] px-2 py-1 text-sm">
             {SERVER.ip}
           </code>
         </Card>
@@ -62,15 +61,22 @@ export default function StartPage() {
         </Card>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
+      <section>
         <Card title="Troubleshooting">
           <ul className="list-inside list-disc space-y-2 text-sm text-muted">
             {troubleshooting.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Button href={SERVER.discordInvite} variant="secondary">
+              Получить доступ в Discord
+            </Button>
+            <Button href="/rules" variant="ghost">
+              Открыть правила
+            </Button>
+          </div>
         </Card>
-        <StartForm />
       </section>
     </div>
   );

@@ -12,6 +12,7 @@ export const SERVER = {
     "https://discord.com/widget?id=123456789012345678&theme=dark",
   launcherUrl: "/downloads/mushoku-pack.zip",
   rulesAnchor: "/rules",
+  fullRulesUrl: process.env.NEXT_PUBLIC_FULL_RULES_URL ?? "/rules",
   dynmapUrl: "https://map.mushoku-reincarnation.ru",
 };
 
