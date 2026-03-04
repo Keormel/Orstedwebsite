@@ -1,62 +1,94 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { ClassRacePicker } from "@/components/class-race-picker";
-import { Card } from "@/components/ui/card";
-import { Tabs } from "@/components/ui/tabs";
+import { ClassesHub } from "@/components/classes/classes-hub";
 import { getClasses } from "@/lib/strapi";
 
 export const metadata: Metadata = {
   title: "Классы",
-  description: "Гайды по 4 классам: Страж, Воин, Ассасин, Маг.",
+  description: "Тактический центр классов: роли, синергии и рекомендации под стиль игры.",
 };
+
+const onboardingFlow = [
+  {
+    step: "01",
+    title: "Выбери стиль боя",
+    text: "Определи, хочешь ли ты танковать, наносить burst-урон, играть от контроля или быть саппорт-ядром группы.",
+  },
+  {
+    step: "02",
+    title: "Собери расовую синергию",
+    text: "Подбери расу под класс, чтобы усилить сильные стороны и сгладить уязвимости в ранней игре.",
+  },
+  {
+    step: "03",
+    title: "Открой полный профиль",
+    text: "Изучи навыки и ротации класса, затем переходи к старту через пошаговый гайд.",
+  },
+];
 
 export default async function ClassesPage() {
   const classData = await getClasses();
+
   return (
-    <div className="container-page space-y-6 py-8 sm:space-y-8 sm:py-12">
-      <header className="surface relative overflow-hidden p-5 sm:p-8">
-        <div className="parallax-layer absolute -right-10 -top-10 h-44 w-44 rounded-full bg-[#2cd6a344] blur-3xl" />
-        <h1 className="page-title">Классы и роли</h1>
-        <p className="mt-3 max-w-3xl text-muted">
-          Выбор класса определяет темп прокачки, роль в рейдах и возможности в PvP.
-        </p>
-      </header>
-
-      <ClassRacePicker classes={classData} />
-
-      <Tabs
-        items={classData.map((item) => ({
-          id: item.slug,
-          label: item.name,
-          content: (
-            <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-              <div>
-                <p className="text-sm text-muted">{item.tagline}</p>
-                <p className="mt-2 text-sm text-muted">Роль: {item.role}</p>
-                <p className="mt-2 text-sm text-muted">Путь: {item.path}</p>
-              </div>
-              <Link href={`/classes/${item.slug}`} className="selection-link inline-flex text-sm">
-                Открыть полный гайд
-              </Link>
-            </div>
-          ),
-        }))}
-      />
-
-      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {classData.map((item) => (
-          <Card key={item.slug} title={item.name} description={item.tagline} className="class-profile-card">
-            <ul className="list-inside list-disc text-sm text-muted">
-              {item.strengths.slice(0, 2).map((strength) => (
-                <li key={strength}>{strength}</li>
-              ))}
-            </ul>
-            <Link href={`/classes/${item.slug}`} className="selection-link mt-4 inline-flex text-sm">
-              Профиль класса
+    <div className="class-page">
+      <div className="container-page py-8 sm:py-12">
+        <header className="class-hero">
+          <div className="class-hero-badge">Академия ролей</div>
+          <h1 className="class-hero-title">Классовый терминал сервера</h1>
+          <p className="class-hero-text">
+            Эта страница создана как тактический хаб: выбирай класс, проверяй синергию с расой
+            и сразу переходи к боевой роли, которая подходит именно твоему стилю игры.
+          </p>
+          <div className="class-hero-actions">
+            <Link href="/start" className="class-hero-link class-hero-link-solid">
+              Перейти к старту
             </Link>
-          </Card>
-        ))}
-      </section>
+            <Link href="/rules" className="class-hero-link">
+              Правила классового PvP
+            </Link>
+          </div>
+        </header>
+
+        <ClassesHub classes={classData} />
+
+        <section className="class-matrix">
+          <div className="class-matrix-head">
+            <h2>Матрица ролей</h2>
+            <p>
+              Быстрый обзор: что дает каждый класс команде, в чем его пик и где требуется
+              поддержка союзников.
+            </p>
+          </div>
+          <div className="class-matrix-grid">
+            {classData.map((item) => (
+              <article key={item.slug} className="class-matrix-card">
+                <p className="class-matrix-title">{item.name}</p>
+                <p className="class-matrix-sub">{item.role}</p>
+                <p className="class-matrix-kicker">Командная ценность</p>
+                <p className="class-matrix-copy">{item.strengths[0] ?? item.tagline}</p>
+                <p className="class-matrix-kicker">Что компенсировать</p>
+                <p className="class-matrix-copy">{item.weaknesses[0] ?? "Требует аккуратной игры."}</p>
+                <Link href={`/classes/${item.slug}`} className="selection-link mt-4 inline-flex text-sm">
+                  Детальный разбор
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="class-flow">
+          <h2>Как выбрать класс за 3 шага</h2>
+          <div className="class-flow-grid">
+            {onboardingFlow.map((item) => (
+              <article key={item.step} className="class-flow-card">
+                <p className="class-flow-step">{item.step}</p>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
