@@ -3,7 +3,7 @@ import { ClassInfo, EventItem, NewsPost } from "@/types/content";
 export const SERVER = {
   name: "Mushoku Reincarnation",
   slogan: "Академия магии, клинок приключений и войны гильдий",
-  ip: process.env.NEXT_PUBLIC_MC_IP ?? "play.mushoku-reincarnation.ru",
+  ip: process.env.NEXT_PUBLIC_MC_IP ?? "148.251.68.3:25565",
   version: "1.20.4",
   discordInvite:
     process.env.NEXT_PUBLIC_DISCORD_INVITE ?? "https://discord.gg/mushoku",

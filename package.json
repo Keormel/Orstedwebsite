@@ -8,5 +8,8 @@
     "lint": "npm --prefix web run lint",
     "typecheck": "npm --prefix web run typecheck",
     "clean": "node scripts/clean-workspace.mjs"
+  },
+  "dependencies": {
+    "20": "^3.1.9"
   }
 }

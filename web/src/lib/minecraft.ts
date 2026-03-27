@@ -7,6 +7,10 @@ export type MinecraftStatus = {
   latency: string;
 };
 
+const MC_STATUS_TOKEN =
+  process.env.MC_STATUS_TOKEN ?? "tk_uGkgYcn7wwYuK7FzfT5tVWMpqWc4An06TNtuQNFW";
+const MC_STATUS_ID = process.env.MC_STATUS_ID ?? "2";
+
 const DEFAULT_STATUS: MinecraftStatus = {
   online: false,
   playersOnline: 0,
@@ -18,8 +22,16 @@ const DEFAULT_STATUS: MinecraftStatus = {
 
 export async function getMinecraftStatus(ip: string): Promise<MinecraftStatus> {
   try {
-    const response = await fetch(`https://api.mcsrvstat.us/3/${ip}`, {
+    const apiUrl = new URL(`https://api.mcsrvstat.us/3/${ip}`);
+    if (MC_STATUS_ID) apiUrl.searchParams.set("id", MC_STATUS_ID);
+    if (MC_STATUS_TOKEN) apiUrl.searchParams.set("token", MC_STATUS_TOKEN);
+
+    const response = await fetch(apiUrl.toString(), {
       next: { revalidate: 60 },
+      headers: {
+        // mcsrvstat.us requires a non-empty descriptive User-Agent.
+        "User-Agent": "Orstedwebsite/1.0 (+minecraft-status)",
+      },
     });
     if (!response.ok) return DEFAULT_STATUS;
 
