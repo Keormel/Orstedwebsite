@@ -29,6 +29,19 @@ export async function MinecraftStatusCard() {
             {status.playersOnline}/{status.playersMax}
           </span>
         </div>
+        {status.playersList.length > 0 && (
+          <div className="mt-3 border-t border-[#2e6861] pt-3">
+            <p className="text-xs text-muted mb-2">Онлайн сейчас:</p>
+            <ul className="space-y-1 text-sm">
+              {status.playersList.map((playerName) => (
+                <li key={playerName} className="flex items-center gap-2">
+                  <span className="inline-block h-2 w-2 rounded-full bg-[var(--accent)]"></span>
+                  {playerName}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </Card>
   );

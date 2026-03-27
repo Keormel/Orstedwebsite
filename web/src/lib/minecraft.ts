@@ -5,6 +5,7 @@ export type MinecraftStatus = {
   version: string;
   motd: string;
   latency: string;
+  playersList: string[];
 };
 
 const MC_STATUS_TOKEN =
@@ -18,6 +19,7 @@ const DEFAULT_STATUS: MinecraftStatus = {
   version: "1.20.4",
   motd: "Сервер временно недоступен",
   latency: "n/a",
+  playersList: [],
 };
 
 export async function getMinecraftStatus(ip: string): Promise<MinecraftStatus> {
@@ -37,7 +39,7 @@ export async function getMinecraftStatus(ip: string): Promise<MinecraftStatus> {
 
     const data = (await response.json()) as {
       online?: boolean;
-      players?: { online?: number; max?: number };
+      players?: { online?: number; max?: number; list?: Array<{ name: string }> };
       version?: string;
       motd?: { clean?: string[] };
       debug?: { ping?: boolean };
@@ -50,6 +52,7 @@ export async function getMinecraftStatus(ip: string): Promise<MinecraftStatus> {
       version: data.version ?? DEFAULT_STATUS.version,
       motd: data.motd?.clean?.[0] ?? "Готов к подключению",
       latency: data.debug?.ping ? "ok" : "n/a",
+      playersList: data.players?.list?.map((p) => p.name) ?? [],
     };
   } catch {
     return DEFAULT_STATUS;
