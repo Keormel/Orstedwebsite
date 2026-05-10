@@ -2,176 +2,219 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SERVER } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
-import { CopyIpButton } from "@/components/copy-ip-button";
 
-const leftNavItems = [
-  { href: "/", label: "Главная" },
-  { href: "/start", label: "Начать играть" },
-  { href: "/lore", label: "Лор / Мир" },
-  { href: "/classes", label: "Классы" },
+const communityItems = [
+  { href: "/news", label: "Блог" },
+  { href: "/events", label: "Предложения" },
+  { href: "/classes", label: "Стафф" },
 ];
 
 const rightNavItems = [
-  { href: "/rules", label: "Правила" },
-  { href: "/news", label: "Новости" },
-  { href: "/events", label: "Ивенты" },
-  { href: "/donate", label: "Донат" },
+  { href: "/lore", label: "Вики" },
+  { href: "/start", label: "Голосовать" },
+  { href: "/donate", label: "Магазин" },
 ];
-
-const mobileNavItems = [...leftNavItems, ...rightNavItems.filter((item) => item.href !== "/classes")];
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const navbarRef = useRef<HTMLElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let frame = 0;
+    const onScroll = () => setScrolled(window.scrollY > 18);
 
-    const updateScrollState = () => {
-      const scrollTop = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      setScrolled(scrollTop > 18);
-      setScrollProgress(maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0);
-      frame = 0;
-    };
-
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(updateScrollState);
-    };
-
-    updateScrollState();
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      if (!navbarRef.current?.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+        setIsDropdownOpen(false);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("touchstart", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("touchstart", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
     };
   }, []);
 
   useEffect(() => {
-    if (!mobileMenuOpen) {
-      document.body.style.overflow = "";
-      return;
-    }
+    if (!isCopied) return;
 
-    document.body.style.overflow = "hidden";
-    const onEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileMenuOpen(false);
-    };
-
-    window.addEventListener("keydown", onEsc);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onEsc);
-    };
-  }, [mobileMenuOpen]);
+    const timeout = window.setTimeout(() => setIsCopied(false), 2000);
+    return () => window.clearTimeout(timeout);
+  }, [isCopied]);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
+  const copyIp = async () => {
+    try {
+      await navigator.clipboard.writeText(SERVER.ip);
+      setIsCopied(true);
+    } catch {
+      setIsCopied(false);
+    }
+  };
+
+  const closeMenus = () => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+  };
+
+  const isCommunityActive = communityItems.some((item) => isActive(item.href));
+
+  const navLinkClass = (href: string) => `navbar__link ${isActive(href) ? "navbar__link--active" : ""}`;
+
+  const renderIpCopyField = () => (
+    <button
+      type="button"
+      className={`navbar__ip ${isCopied ? "navbar__ip--copied" : ""}`}
+      onClick={copyIp}
+      aria-label="Скопировать IP сервера"
+    >
+      <span className="navbar__ip-value">{isCopied ? "✓ Скопировано!" : SERVER.ip}</span>
+      <span className="navbar__ip-copy" aria-hidden="true">
+        {isCopied ? "✓" : "📋"}
+      </span>
+    </button>
+  );
+
+  const renderLogo = () => (
+    <Link href="/" className="navbar__logo" onClick={closeMenus} aria-label={`${SERVER.name} - главная`}>
+      <span className="navbar__logo-icon" aria-hidden="true" />
+      <span className="navbar__logo-text">{SERVER.name}</span>
+    </Link>
+  );
+
   return (
-    <header className={`site-header sticky top-0 z-40 backdrop-blur ${scrolled ? "site-header-scrolled" : ""}`}>
-      <div className="site-header-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
-      <div className="site-header-inner container-page py-3">
-        <div className="site-header-row">
-          <nav className="site-nav site-nav-left hidden flex-wrap gap-1.5 text-sm xl:flex" aria-label="Левая навигация">
-            {leftNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`nav-link px-3 py-2 ${isActive(item.href) ? "nav-link-active" : ""}`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+    <nav ref={navbarRef} className={`navbar ${scrolled ? "navbar--scrolled" : ""}`} aria-label="Основная навигация">
+      <div className="navbar__left">
+        <Link href="/" className={navLinkClass("/")}>
+          Главная
+        </Link>
 
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="site-logo inline-flex min-h-11 items-center text-base font-bold sm:text-lg"
-          >
-            <span className="site-logo-block" aria-hidden="true" />
-            <span className="site-logo-text">{SERVER.name}</span>
-          </Link>
-
-          <div className="site-nav-right hidden items-center justify-end gap-2 xl:flex">
-            <nav className="site-nav flex flex-wrap justify-end gap-1.5 text-sm" aria-label="Правая навигация">
-              {rightNavItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`nav-link px-3 py-2 ${isActive(item.href) ? "nav-link-active" : ""}`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="site-header-actions flex items-center gap-2">
-              <CopyIpButton compact />
-              <Button href="/donate" variant="ghost" className="px-3 text-sm">
-                Магазин
-              </Button>
-              <Button href={SERVER.discordInvite} variant="secondary" className="px-4 text-sm">
-                Discord
-              </Button>
-            </div>
-          </div>
-
+        <div
+          className={`navbar__dropdown ${isDropdownOpen ? "navbar__dropdown--open" : ""}`}
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
+        >
           <button
             type="button"
-            aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-site-nav"
-            className="mobile-menu-button inline-flex h-11 w-11 items-center justify-center xl:hidden"
-            onClick={() => setMobileMenuOpen((value) => !value)}
+            className={`navbar__link navbar__dropdown-toggle ${isCommunityActive ? "navbar__link--active" : ""} ${isDropdownOpen ? "navbar__dropdown-toggle--open" : ""}`}
+            onClick={() => setIsDropdownOpen((value) => !value)}
+            aria-expanded={isDropdownOpen}
           >
-            <span className="sr-only">Toggle navigation</span>
-            <span className="relative block h-3.5 w-5">
-              <span
-                className={`absolute left-0 top-0.5 h-0.5 w-5 rounded bg-current transition-transform duration-200 ${mobileMenuOpen ? "translate-y-1.5 rotate-45" : ""}`}
-              />
-              <span
-                className={`absolute left-0 top-2 h-0.5 w-5 rounded bg-current transition-opacity duration-200 ${mobileMenuOpen ? "opacity-0" : "opacity-100"}`}
-              />
-              <span
-                className={`absolute left-0 top-3.5 h-0.5 w-5 rounded bg-current transition-transform duration-200 ${mobileMenuOpen ? "-translate-y-1.5 -rotate-45" : ""}`}
-              />
+            Сообщество
+            <span className="navbar__dropdown-arrow" aria-hidden="true">
+              ▾
             </span>
           </button>
-        </div>
-        <div
-          id="mobile-site-nav"
-          className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 xl:hidden ${mobileMenuOpen ? "mt-3 max-h-[620px] opacity-100" : "max-h-0 opacity-0"}`}
-        >
-          <nav className="mobile-nav-panel grid gap-1 p-2 text-sm">
-            {mobileNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`mobile-nav-link px-3 py-2.5 ${isActive(item.href) ? "mobile-nav-link-active" : ""}`}
-              >
+          <div className="navbar__dropdown-menu">
+            {communityItems.map((item) => (
+              <Link key={item.href} href={item.href} className="navbar__dropdown-item" onClick={closeMenus}>
                 {item.label}
               </Link>
             ))}
-          </nav>
-          <div className="mt-2 grid gap-2">
-            <CopyIpButton />
-            <Button href={SERVER.discordInvite} variant="secondary" className="w-full justify-center text-sm">
-              Discord-сообщество
-            </Button>
           </div>
         </div>
       </div>
-    </header>
+
+      <div className="navbar__center">{renderLogo()}</div>
+
+      <div className="navbar__right">
+        {rightNavItems.map((item) => (
+          <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
+            {item.label}
+          </Link>
+        ))}
+        <Link href={SERVER.discordInvite} className="navbar__discord" aria-label="Discord сервер">
+          <DiscordIcon />
+        </Link>
+        {renderIpCopyField()}
+      </div>
+
+      <button
+        type="button"
+        className="navbar__burger"
+        onClick={() => setIsMenuOpen((value) => !value)}
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-site-nav"
+        aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <div id="mobile-site-nav" className={`navbar__mobile ${isMenuOpen ? "navbar__mobile--open" : ""}`}>
+        <div className="navbar__mobile-logo">{renderLogo()}</div>
+        <div className="navbar__mobile-links">
+          <Link href="/" className={navLinkClass("/")} onClick={closeMenus}>
+            Главная
+          </Link>
+          <button
+            type="button"
+            className={`navbar__link navbar__dropdown-toggle ${isCommunityActive ? "navbar__link--active" : ""} ${isDropdownOpen ? "navbar__dropdown-toggle--open" : ""}`}
+            onClick={() => setIsDropdownOpen((value) => !value)}
+            aria-expanded={isDropdownOpen}
+          >
+            Сообщество
+            <span className="navbar__dropdown-arrow" aria-hidden="true">
+              ▾
+            </span>
+          </button>
+          <div className={`navbar__mobile-dropdown ${isDropdownOpen ? "navbar__mobile-dropdown--open" : ""}`}>
+            {communityItems.map((item) => (
+              <Link key={item.href} href={item.href} className="navbar__dropdown-item" onClick={closeMenus}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          {rightNavItems.map((item) => (
+            <Link key={item.href} href={item.href} className={navLinkClass(item.href)} onClick={closeMenus}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        <div className="navbar__mobile-actions">
+          {renderIpCopyField()}
+          <Link href={SERVER.discordInvite} className="navbar__discord navbar__discord--mobile" aria-label="Discord сервер">
+            <DiscordIcon />
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function DiscordIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M19.5 5.2A16.4 16.4 0 0 0 15.5 4l-.2.4a14.2 14.2 0 0 1 3.4 1.7 11.4 11.4 0 0 0-10.4 0 14.2 14.2 0 0 1 3.4-1.7L11.5 4a16.4 16.4 0 0 0-4 1.2C5 8.8 4.3 12.2 4.6 15.6A16.3 16.3 0 0 0 9.5 18l.6-.9a10.6 10.6 0 0 1-1.5-.7l.4-.3a11.6 11.6 0 0 0 10 0l.4.3a10.6 10.6 0 0 1-1.5.7l.6.9a16.3 16.3 0 0 0 4.9-2.4c.4-3.9-.6-7.2-2.9-10.4ZM10 13.6c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z" />
+    </svg>
   );
 }
