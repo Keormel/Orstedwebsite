@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { classData } from "@/lib/constants";
 import { getNewsPosts } from "@/lib/strapi";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mushoku-reincarnation.ru";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://123.123.123";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
