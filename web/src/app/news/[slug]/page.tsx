@@ -43,7 +43,7 @@ export default async function NewsArticlePage({ params }: Props) {
         <p className="mt-4 text-base text-muted">{post.summary}</p>
       </header>
       <section className="surface mt-6 p-5 sm:p-8">
-        <p className="break-words leading-7 text-[#dce7f8] sm:leading-8">{post.content}</p>
+        <p className="break-words leading-7 text-[var(--color-text-secondary)] sm:leading-8">{post.content}</p>
       </section>
     </article>
   );

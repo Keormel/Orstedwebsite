@@ -1,19 +1,20 @@
 import { ClassInfo, EventItem, NewsPost } from "@/types/content";
 
 export const SERVER = {
-  name: "Mushoku Reincarnation",
-  slogan: "Академия магии, клинок приключений и войны гильдий",
+  name: "Orsted Project",
+  slogan: "Minecraft RPG проект с классами, гильдиями и сезонными войнами",
+  logo: "/assets/orsted-logo.svg",
   ip: process.env.NEXT_PUBLIC_MC_IP ?? "148.251.68.3:25565",
   version: "1.20.4",
   discordInvite:
-    process.env.NEXT_PUBLIC_DISCORD_INVITE ?? "https://discord.gg/mushoku",
+    process.env.NEXT_PUBLIC_DISCORD_INVITE ?? "https://discord.gg/orsted",
   discordWidget:
     process.env.NEXT_PUBLIC_DISCORD_WIDGET ??
     "https://discord.com/widget?id=123456789012345678&theme=dark",
-  launcherUrl: "/downloads/mushoku-pack.zip",
+  launcherUrl: "/downloads/orsted-pack.zip",
   rulesAnchor: "/rules",
   fullRulesUrl: process.env.NEXT_PUBLIC_FULL_RULES_URL ?? "/rules",
-  dynmapUrl: "https://map.mushoku-reincarnation.ru",
+  dynmapUrl: "https://map.mtminecraft.online",
 };
 
 export const classData: ClassInfo[] = [

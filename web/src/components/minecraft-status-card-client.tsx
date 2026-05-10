@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import type { MinecraftStatus } from "@/lib/minecraft";
 
@@ -30,55 +29,30 @@ export function MinecraftStatusCardClient() {
 
   if (loading || !status) {
     return (
-      <Card title="Статус сервера" className="h-full">
-        <div className="animate-pulse space-y-3 text-sm">
-          <div className="h-4 bg-[#2e6861] rounded w-24"></div>
-          <div className="h-4 bg-[#2e6861] rounded w-32"></div>
+      <Card title="Статус сервера" className="server-status-card h-full">
+        <div className="server-status-loading animate-pulse space-y-3">
+          <div className="h-4 w-24 bg-[var(--color-border)]"></div>
+          <div className="h-4 w-32 bg-[var(--color-border)]"></div>
         </div>
       </Card>
     );
   }
 
   return (
-    <Card title="Статус сервера" className="h-full">
-      <div className="space-y-3 text-sm">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="text-muted">Состояние</span>
-          <Badge tone={status.online ? "accent" : "muted"}>
+    <Card title="Статус сервера" className="server-status-card h-full">
+      <div className="server-status-panel">
+        <div className="server-status-head">
+          <span className={status.online ? "status-lamp status-lamp-online" : "status-lamp status-lamp-offline"} />
+          <span className={status.online ? "server-status-online" : "server-status-offline"}>
             {status.online ? "Онлайн" : "Оффлайн"}
-          </Badge>
-        </div>
-        <div className="flex items-start justify-between gap-3">
-          <span className="text-muted">IP</span>
-          <code className="max-w-[65%] break-all text-right text-xs sm:text-sm">
-            {status.online ? "148.251.68.3:25565" : "недоступен"}
-          </code>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="text-muted">Версия</span>
-          <span className="text-xs">{status.version}</span>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="text-muted">Игроки</span>
-          <span>
-            {status.playersOnline}/{status.playersMax}
           </span>
         </div>
-        {status.playersList.length > 0 && (
-          <div className="mt-3 border-t border-[#2e6861] pt-3">
-            <p className="text-xs text-muted mb-2">Онлайн сейчас:</p>
-            <ul className="space-y-1 text-sm">
-              {status.playersList.map((playerName) => (
-                <li key={playerName} className="flex items-center gap-2">
-                  <span className="inline-block h-2 w-2 rounded-full bg-[var(--accent)]"></span>
-                  {playerName}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className="server-status-row">
+          <span>Версия</span>
+          <strong>{status.version}</strong>
+        </div>
         {error && (
-          <div className="text-xs text-red-400 mt-2">
+          <div className="server-status-error">
             Ошибка обновления
           </div>
         )}

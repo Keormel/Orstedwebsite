@@ -5,17 +5,23 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SERVER } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
+import { CopyIpButton } from "@/components/copy-ip-button";
 
-const navItems = [
+const leftNavItems = [
   { href: "/", label: "Главная" },
   { href: "/start", label: "Начать играть" },
   { href: "/lore", label: "Лор / Мир" },
   { href: "/classes", label: "Классы" },
+];
+
+const rightNavItems = [
   { href: "/rules", label: "Правила" },
   { href: "/news", label: "Новости" },
   { href: "/events", label: "Ивенты" },
   { href: "/donate", label: "Донат" },
 ];
+
+const mobileNavItems = [...leftNavItems, ...rightNavItems.filter((item) => item.href !== "/classes")];
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -74,35 +80,58 @@ export function SiteHeader() {
   return (
     <header className={`site-header sticky top-0 z-40 backdrop-blur ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="site-header-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
-      <div className="container-page py-3">
-        <div className="flex items-center justify-between gap-3">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="inline-flex min-h-11 items-center text-base font-bold tracking-[0.02em] transition-[letter-spacing,text-shadow] duration-300 hover:tracking-[0.04em] hover:[text-shadow:0_0_18px_rgba(87,184,255,0.32)] sm:text-lg"
-          >
-            {SERVER.name}
-          </Link>
-          <nav className="hidden flex-wrap gap-1.5 text-sm md:flex" aria-label="Основная навигация">
-            {navItems.map((item) => (
+      <div className="site-header-inner container-page py-3">
+        <div className="site-header-row">
+          <nav className="site-nav site-nav-left hidden flex-wrap gap-1.5 text-sm xl:flex" aria-label="Левая навигация">
+            {leftNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link rounded-md px-3 py-2 ${isActive(item.href) ? "nav-link-active" : ""}`}
+                className={`nav-link px-3 py-2 ${isActive(item.href) ? "nav-link-active" : ""}`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <Button href={SERVER.discordInvite} variant="secondary" className="hidden px-4 text-sm md:inline-flex">
-            Discord-сообщество
-          </Button>
+
+          <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="site-logo inline-flex min-h-11 items-center text-base font-bold sm:text-lg"
+          >
+            <span className="site-logo-block" aria-hidden="true" />
+            <span className="site-logo-text">{SERVER.name}</span>
+          </Link>
+
+          <div className="site-nav-right hidden items-center justify-end gap-2 xl:flex">
+            <nav className="site-nav flex flex-wrap justify-end gap-1.5 text-sm" aria-label="Правая навигация">
+              {rightNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`nav-link px-3 py-2 ${isActive(item.href) ? "nav-link-active" : ""}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="site-header-actions flex items-center gap-2">
+              <CopyIpButton compact />
+              <Button href="/donate" variant="ghost" className="px-3 text-sm">
+                Магазин
+              </Button>
+              <Button href={SERVER.discordInvite} variant="secondary" className="px-4 text-sm">
+                Discord
+              </Button>
+            </div>
+          </div>
+
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-site-nav"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#36595f] bg-[#10282d] text-[#d5fff4] transition-colors hover:border-[var(--accent)] hover:text-white md:hidden"
+            className="mobile-menu-button inline-flex h-11 w-11 items-center justify-center xl:hidden"
             onClick={() => setMobileMenuOpen((value) => !value)}
           >
             <span className="sr-only">Toggle navigation</span>
@@ -121,23 +150,26 @@ export function SiteHeader() {
         </div>
         <div
           id="mobile-site-nav"
-          className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 md:hidden ${mobileMenuOpen ? "mt-3 max-h-[480px] opacity-100" : "max-h-0 opacity-0"}`}
+          className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 xl:hidden ${mobileMenuOpen ? "mt-3 max-h-[620px] opacity-100" : "max-h-0 opacity-0"}`}
         >
-          <nav className="grid gap-1 rounded-xl border border-[#36595f] bg-[#10282d] p-2 text-sm">
-            {navItems.map((item) => (
+          <nav className="mobile-nav-panel grid gap-1 p-2 text-sm">
+            {mobileNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`rounded-lg px-3 py-2.5 transition-colors ${isActive(item.href) ? "bg-[#1e4f4a] text-white" : "text-[var(--muted)] hover:bg-[#19373c] hover:text-white"}`}
+                className={`mobile-nav-link px-3 py-2.5 ${isActive(item.href) ? "mobile-nav-link-active" : ""}`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <Button href={SERVER.discordInvite} variant="secondary" className="mt-2 w-full justify-center text-sm">
-            Discord-сообщество
-          </Button>
+          <div className="mt-2 grid gap-2">
+            <CopyIpButton />
+            <Button href={SERVER.discordInvite} variant="secondary" className="w-full justify-center text-sm">
+              Discord-сообщество
+            </Button>
+          </div>
         </div>
       </div>
     </header>

@@ -1,12 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { DiscordEmbed } from "@/components/discord-embed";
-import { MinecraftStatusCard } from "@/components/minecraft-status-card";
 import { TrailerGallery } from "@/components/trailer-gallery";
+import { CopyIpButton } from "@/components/copy-ip-button";
+import { LaunchCountdown } from "@/components/launch-countdown";
 import { Reveal } from "@/components/ui/reveal";
 import {
   DaggerIcon,
@@ -20,7 +22,7 @@ import { getClasses, getFaqItems, getNewsPosts } from "@/lib/strapi";
 export const metadata: Metadata = {
   title: "Главная",
   description:
-    "Вступай на RPG Minecraft сервер по вселенной Mushoku Tensei. Быстрый старт за 3 шага.",
+    "Вступай на RPG Minecraft сервер Orsted Project. Быстрый старт за 3 шага.",
 };
 
 const projectPillars = [
@@ -51,22 +53,38 @@ const classIcons = {
   mage: SparkIcon,
 };
 
+const classArt = {
+  guardian: "/assets/external/oga-heroes/PNG/Knight/knight.png",
+  warrior: "/assets/external/oga-heroes/PNG/Knight/Attack/attack1.png",
+  assassin: "/assets/external/oga-heroes/PNG/Rogue/rogue.png",
+  mage: "/assets/external/oga-heroes/PNG/Mage/mage.png",
+};
+
 export default async function HomePage() {
   const classes = await getClasses();
   const news = await getNewsPosts();
   const faq = await getFaqItems();
 
   return (
-    <div className="pb-20">
+    <div className="minecraft-home pb-20">
       <Reveal>
-        <section className="container-page grid gap-6 py-8 sm:py-12 md:grid-cols-[1.4fr_1fr] md:py-16">
-        <div className="surface relative overflow-hidden p-5 sm:p-8 md:p-10">
-          <div className="parallax-layer absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[#2cd6a355] blur-3xl" />
+        <section className="hero-section hero-section-centered grid gap-6 px-4 py-8 sm:py-12 md:py-16">
+        <div className="hero-cloud hero-cloud-one" />
+        <div className="hero-cloud hero-cloud-two" />
+        <div className="hero-character hero-character-left" aria-hidden="true" />
+        <div className="hero-character hero-character-right" aria-hidden="true" />
+        <div className="hero-panel surface relative overflow-hidden p-5 sm:p-8 md:p-10">
+          <div className="hero-logo-mark" aria-hidden="true" />
           <Badge tone="gold">Minecraft RPG сервер</Badge>
           <h1 className="page-title mt-5 max-w-2xl">{SERVER.name}</h1>
           <p className="lead-print mt-4 max-w-2xl text-muted">
             {SERVER.slogan}
           </p>
+          <div className="hero-online-line" aria-label="Сервер онлайн">
+            <span className="status-lamp status-lamp-online" aria-hidden="true" />
+            <span>Сервер онлайн</span>
+          </div>
+          <LaunchCountdown />
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="/start">Играть сейчас</Button>
             <Button href={SERVER.discordInvite} variant="secondary">
@@ -85,16 +103,16 @@ export default async function HomePage() {
             <Badge tone="accent">Онлайн обновляется каждые 60 сек.</Badge>
           </div>
         </div>
-        <MinecraftStatusCard />
         </section>
+        <div className="divider-grass" />
       </Reveal>
 
       <Reveal delayMs={60}>
-        <section className="container-page py-6">
+        <section className="section-band sky-light-band container-page py-6">
           <h2 className="text-2xl sm:text-3xl">Что это за сервер</h2>
           <div className="surface mt-4 p-5 sm:p-7">
             <p className="lead-plain">
-              Mushoku Reincarnation это атмосферный RPG-сервер во вселенной аниме,
+              Orsted Project это атмосферный RPG-сервер в Minecraft,
               где развитие персонажа строится через классовую систему, сюжетные линии
               и коллективную игру в гильдиях.
             </p>
@@ -108,25 +126,35 @@ export default async function HomePage() {
       </Reveal>
 
       <Reveal delayMs={90}>
-        <section className="container-page py-8">
+        <section className="section-band stone-pattern classes-section py-10">
+        <div className="container-page">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-2xl sm:text-3xl">Классы</h2>
-          <Link href="/classes" className="text-sm text-[var(--accent)]">
+          <Link href="/classes" className="text-sm text-[var(--color-link)]">
             Открыть все классы
           </Link>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="class-card-grid grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {classes.map((item) => {
             const Icon = classIcons[item.slug];
             return (
-              <Card key={item.slug} title={item.name} description={item.tagline}>
-                <div className="mb-3 inline-flex rounded-lg border border-[#2e6861] bg-[#0d2c2f] p-2 text-[var(--accent)]">
+              <Card key={item.slug} title={item.name} description={item.tagline} className="class-card">
+                <div className="class-card-avatar" aria-hidden="true">
+                  <Image
+                    src={classArt[item.slug]}
+                    alt=""
+                    width={96}
+                    height={132}
+                    unoptimized
+                  />
+                </div>
+                <div className="mb-3 inline-flex border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-2 text-[var(--color-accent)]">
                   <Icon />
                 </div>
                 <p className="text-sm text-muted">{item.role}</p>
                 <Link
                   href={`/classes/${item.slug}`}
-                  className="mt-4 inline-flex text-sm text-[var(--accent)]"
+                  className="mt-4 inline-flex text-sm text-[var(--color-link)]"
                 >
                   Подробнее о классе
                 </Link>
@@ -134,11 +162,29 @@ export default async function HomePage() {
             );
           })}
         </div>
+        </div>
         </section>
       </Reveal>
 
       <Reveal delayMs={120}>
-        <section className="container-page py-8">
+        <section className="section-band wood-pattern join-section py-10">
+        <div className="container-page">
+        <div className="surface join-panel p-5 sm:p-7">
+          <h2 className="text-2xl sm:text-3xl">Как присоединиться</h2>
+          <div className="join-steps mt-5 grid gap-4 md:grid-cols-3">
+            <Card title="Открой Minecraft" description={`Версия сервера: ${SERVER.version}.`} />
+            <Card title="Добавь сервер" description="Вставь IP в список мультиплеера.">
+              <CopyIpButton />
+            </Card>
+            <Card title="Заходи в Discord" description="Новости, пати, поддержка и набор в гильдии." />
+          </div>
+        </div>
+        </div>
+        </section>
+      </Reveal>
+
+      <Reveal delayMs={150}>
+        <section className="section-band container-page py-8">
         <h2 className="text-2xl sm:text-3xl">Прогресс и система</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <Card
@@ -157,11 +203,11 @@ export default async function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal delayMs={150}>
-        <section className="container-page py-8">
+      <Reveal delayMs={180}>
+        <section className="section-band news-section container-page py-8">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-2xl sm:text-3xl">Последние новости</h2>
-          <Link href="/news" className="text-sm text-[var(--accent)]">
+          <Link href="/news" className="text-sm text-[var(--color-link)]">
             Все публикации
           </Link>
         </div>
@@ -178,8 +224,8 @@ export default async function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal delayMs={180}>
-        <section className="container-page py-8">
+      <Reveal delayMs={210}>
+        <section className="section-band container-page py-8">
         <h2 className="text-2xl sm:text-3xl">Трейлер и галерея</h2>
         <div className="mt-4">
           <TrailerGallery />
@@ -187,8 +233,8 @@ export default async function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal delayMs={210}>
-        <section className="container-page py-8">
+      <Reveal delayMs={240}>
+        <section className="section-band container-page py-8">
         <div className="surface p-5 sm:p-7">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-2xl sm:text-3xl">Что делает сервер особенным</h2>
@@ -198,11 +244,11 @@ export default async function HomePage() {
             {projectPillars.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <article key={pillar.title} className="fancy-border rounded-xl bg-[#0d2b2b] p-4">
-                  <div className="inline-flex rounded-lg border border-[#2e6861] bg-[#0d2c2f] p-2 text-[var(--glow)]">
+                <article key={pillar.title} className="fancy-border rounded-xl bg-[var(--color-bg-elevated)] p-4">
+                  <div className="inline-flex rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-surface)] p-2 text-[var(--color-accent)]">
                     <Icon className="h-4 w-4" />
                   </div>
-                  <p className="mt-3 text-base text-white">{pillar.title}</p>
+                  <p className="mt-3 text-base text-[var(--color-text-primary)]">{pillar.title}</p>
                   <p className="mt-1 text-sm text-muted">{pillar.description}</p>
                 </article>
               );
@@ -212,13 +258,15 @@ export default async function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal delayMs={240}>
-        <section className="container-page grid gap-4 py-8 md:grid-cols-2">
+      <Reveal delayMs={270}>
+        <section className="discord-section grid gap-4 py-10 md:grid-cols-2">
+        <div className="container-page contents">
         <div>
           <h2 className="mb-4 text-3xl">FAQ</h2>
           <Accordion items={faq} />
         </div>
         <DiscordEmbed />
+        </div>
         </section>
       </Reveal>
     </div>

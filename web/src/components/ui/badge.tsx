@@ -7,14 +7,17 @@ type BadgeProps = {
 
 export function Badge({ children, tone = "accent" }: BadgeProps) {
   const colorMap = {
-    accent: "text-[#dbfff7] border-[#3ab79a] bg-[#103734]",
-    gold: "text-[#deefff] border-[#4c87ba] bg-[#12283a]",
-    muted: "text-[#d2e7eb] border-[#3c6271] bg-[#13262d]",
+    accent:
+      "text-[var(--color-btn-primary-text)] border-[var(--color-btn-primary-bg)] bg-[var(--color-bg-surface)]",
+    gold:
+      "text-[var(--color-text-primary)] border-[var(--color-accent)] bg-[var(--color-bg-elevated)]",
+    muted:
+      "text-[var(--color-text-secondary)] border-[var(--color-border)] bg-[var(--color-bg-surface)]",
   };
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${colorMap[tone]}`}
+      className={`badge-mc inline-flex items-center border px-3 py-1 text-xs font-medium ${colorMap[tone]}`}
     >
       {children}
     </span>

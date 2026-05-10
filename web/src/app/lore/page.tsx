@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Лор / Мир",
   description:
-    "Сеттинг мира Mushoku Reincarnation: фракции, города и карта мира для экспедиций.",
+    "Сеттинг мира Orsted Project: фракции, города и карта мира для экспедиций.",
 };
 
 export default function LorePage() {
@@ -40,10 +40,10 @@ export default function LorePage() {
           Ниже отображается наша карта мира в PNG-формате. Можно заменить файл
           `web/public/assets/world-map.png` на актуальную версию без изменений в коде.
         </p>
-        <div className="mt-6 overflow-hidden rounded-xl border border-[#2f6360]">
+        <div className="mt-6 overflow-hidden rounded-xl border border-[var(--color-border)]">
           <Image
             src="/assets/world-map.png"
-            alt="Карта мира Mushoku Reincarnation"
+            alt="Карта мира Orsted Project"
             width={1920}
             height={1080}
             className="h-auto w-full object-cover"

@@ -3,7 +3,7 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    container_name: mushoku-web
+    container_name: orsted-web
     restart: unless-stopped
     depends_on:
       - cms
@@ -21,7 +21,7 @@ services:
     build:
       context: ./cms
       dockerfile: Dockerfile
-    container_name: mushoku-cms
+    container_name: orsted-cms
     restart: unless-stopped
     depends_on:
       - postgres
@@ -42,7 +42,7 @@ services:
 
   postgres:
     image: postgres:16-alpine
-    container_name: mushoku-postgres
+    container_name: orsted-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB}

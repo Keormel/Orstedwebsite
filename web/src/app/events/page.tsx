@@ -5,7 +5,7 @@ import { events } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Ивенты",
-  description: "Календарь и архив событий сервера Mushoku Reincarnation.",
+  description: "Календарь и архив событий сервера Orsted Project.",
 };
 
 const NOW_TS = Date.now();

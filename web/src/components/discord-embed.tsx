@@ -10,7 +10,7 @@ export function DiscordEmbed() {
         width="100%"
         height="320"
         sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-        className="rounded-lg border border-[#2a3d5a] bg-[#0d1729]"
+        className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)]"
       />
     </Card>
   );
