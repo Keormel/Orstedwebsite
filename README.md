@@ -1,6 +1,6 @@
-# Mushoku Reincarnation MVP
+# Orsted Project MVP
 
-Production-ready MVP сайта для Minecraft-сервера во вселенной Mushoku Tensei.
+Production-ready MVP сайта для Minecraft-сервера Orsted Project.
 
 ## Stack
 

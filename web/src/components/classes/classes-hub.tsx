@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useMemo, useState, type ComponentType } from "react";
 import { DaggerIcon, ShieldIcon, SparkIcon, SwordIcon } from "@/components/ui/icons";
 import type { ClassInfo, ClassSlug } from "@/types/content";
@@ -11,6 +12,7 @@ type RaceMeta = {
   id: RaceId;
   name: string;
   bonus: string;
+  image: string;
 };
 
 type ClassesHubProps = {
@@ -18,10 +20,30 @@ type ClassesHubProps = {
 };
 
 const races: RaceMeta[] = [
-  { id: "human", name: "Люди", bonus: "универсальный старт и стабильный темп" },
-  { id: "demon", name: "Демоны", bonus: "высокий burst и рискованный плейстайл" },
-  { id: "beast", name: "Зверолюди", bonus: "мобильность и контроль темпа боя" },
-  { id: "sky", name: "Небесные", bonus: "саппорт-руны и командные усиления" },
+  {
+    id: "human",
+    name: "Люди",
+    bonus: "универсальный старт и стабильный темп",
+    image: "/assets/external/oga-heroes/PNG/Knight/knight.png",
+  },
+  {
+    id: "demon",
+    name: "Демоны",
+    bonus: "высокий burst и рискованный плейстайл",
+    image: "/assets/external/oga-heroes/PNG/Rogue/Attack/attack1.png",
+  },
+  {
+    id: "beast",
+    name: "Зверолюди",
+    bonus: "мобильность и контроль темпа боя",
+    image: "/assets/external/oga-heroes/PNG/Rogue/rogue.png",
+  },
+  {
+    id: "sky",
+    name: "Небесные",
+    bonus: "саппорт-руны и командные усиления",
+    image: "/assets/external/oga-heroes/PNG/Mage/mage.png",
+  },
 ];
 
 const classIcons: Record<ClassSlug, ComponentType<{ className?: string }>> = {
@@ -29,6 +51,13 @@ const classIcons: Record<ClassSlug, ComponentType<{ className?: string }>> = {
   warrior: SwordIcon,
   assassin: DaggerIcon,
   mage: SparkIcon,
+};
+
+const classArt: Record<ClassSlug, string> = {
+  guardian: "/assets/external/oga-heroes/PNG/Knight/knight.png",
+  warrior: "/assets/external/oga-heroes/PNG/Knight/Attack/attack1.png",
+  assassin: "/assets/external/oga-heroes/PNG/Rogue/rogue.png",
+  mage: "/assets/external/oga-heroes/PNG/Mage/mage.png",
 };
 
 export function ClassesHub({ classes }: ClassesHubProps) {
@@ -68,6 +97,9 @@ export function ClassesHub({ classes }: ClassesHubProps) {
                   <span className="class-pick-icon">
                     <Icon className="h-5 w-5" />
                   </span>
+                  <span className="class-pick-art" aria-hidden="true">
+                    <Image src={classArt[item.slug]} alt="" width={58} height={70} unoptimized />
+                  </span>
                   <span className="class-pick-label">{item.name}</span>
                   <span className="class-pick-role">{item.role}</span>
                 </button>
@@ -82,6 +114,9 @@ export function ClassesHub({ classes }: ClassesHubProps) {
           <div className="class-stage-head">
             <span className="class-pick-icon">
               <ActiveIcon className="h-5 w-5" />
+            </span>
+            <span className="class-stage-art" aria-hidden="true">
+              <Image src={classArt[activeClass.slug]} alt="" width={72} height={88} unoptimized />
             </span>
             <div>
               <p className="class-stage-title">{activeClass.name}</p>
@@ -100,6 +135,9 @@ export function ClassesHub({ classes }: ClassesHubProps) {
                   className={`race-token ${active ? "race-token-active" : ""}`}
                   aria-pressed={active}
                 >
+                  <span className="race-token-art" aria-hidden="true">
+                    <Image src={race.image} alt="" width={32} height={34} unoptimized />
+                  </span>
                   {race.name}
                 </button>
               );

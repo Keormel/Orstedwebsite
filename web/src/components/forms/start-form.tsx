@@ -67,12 +67,12 @@ export function StartForm() {
       <button
         type="submit"
         disabled={state.loading}
-        className="w-full rounded-xl border border-[#8af4d8] bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-[#032019] disabled:opacity-70 sm:w-auto"
+        className="w-full rounded-xl border border-[var(--color-btn-primary-bg)] bg-[var(--color-btn-primary-bg)] px-5 py-2 text-sm font-semibold text-[var(--color-btn-primary-text)] transition-colors hover:bg-[var(--color-btn-primary-hover)] disabled:opacity-70 sm:w-auto"
       >
         {state.loading ? "Отправка..." : "Отправить"}
       </button>
       {state.message ? (
-        <p className={`text-sm ${state.error ? "text-[var(--danger)]" : "text-[#8af5b2]"}`}>{state.message}</p>
+        <p className={`text-sm ${state.error ? "text-[var(--danger)]" : "text-[var(--color-link)]"}`}>{state.message}</p>
       ) : null}
     </form>
   );

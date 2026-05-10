@@ -15,29 +15,30 @@ export function Accordion({ items }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="space-y-3">
+    <div className="accordion">
       {items.map((item, idx) => {
         const isOpen = openIndex === idx;
         const contentId = `accordion-content-${idx}`;
         const triggerId = `accordion-trigger-${idx}`;
+
         return (
-          <div key={item.q} className="surface p-4 sm:p-5">
+          <div key={item.q} className={`accordion__item ${isOpen ? "accordion__item--open" : ""}`}>
             <button
               id={triggerId}
               type="button"
               aria-expanded={isOpen}
               aria-controls={contentId}
-              className="flex min-h-11 w-full items-center justify-between gap-4 text-left text-sm font-semibold sm:text-base"
+              className="accordion__trigger"
               onClick={() => setOpenIndex(isOpen ? null : idx)}
             >
               <span>{item.q}</span>
-              <span className="text-[var(--accent)]" aria-hidden="true">{isOpen ? "−" : "+"}</span>
+              <span className="accordion__icon" aria-hidden="true">
+                {isOpen ? "−" : "+"}
+              </span>
             </button>
-            {isOpen ? (
-              <p id={contentId} role="region" aria-labelledby={triggerId} className="mt-3 text-sm leading-relaxed text-muted">
-                {item.a}
-              </p>
-            ) : null}
+            <div id={contentId} role="region" aria-labelledby={triggerId} className="accordion__content">
+              <p>{item.a}</p>
+            </div>
           </div>
         );
       })}

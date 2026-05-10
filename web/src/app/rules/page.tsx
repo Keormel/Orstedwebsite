@@ -61,13 +61,13 @@ export default function RulesPage() {
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="rounded-md border border-[#2a5151] px-3 py-1 text-muted hover:text-white"
+              className="rounded-md border border-[var(--color-border)] px-3 py-1 text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-text-primary)]"
             >
               {section.title}
             </a>
           ))}
         </nav>
-        <div className="mt-5 rounded-xl border border-[#2e6861] bg-[#0b2b2a] p-4">
+        <div className="mt-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-4">
           <p className="text-sm text-muted">
             Нужен полный юридический и технический свод? Открой расширенную версию правил.
           </p>

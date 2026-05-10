@@ -23,7 +23,7 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#02060fcc] p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(30,58,74,0.25)] p-4"
       onClick={onClose}
     >
       <div
@@ -36,7 +36,7 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
             type="button"
             aria-label="Close modal"
             onClick={onClose}
-            className="text-xl text-muted hover:text-white"
+            className="text-xl text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
           >
             &times;
           </button>

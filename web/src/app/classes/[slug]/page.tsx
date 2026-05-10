@@ -61,7 +61,10 @@ export default async function ClassDetailsPage({ params }: Props) {
         <h2 className="text-3xl">Примеры билдов</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {classInfo.builds.map((build) => (
-            <div key={build} className="rounded-lg border border-[#2e6861] bg-[#0d2b2b] p-3 text-sm">
+            <div
+              key={build}
+              className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-3 text-sm"
+            >
               {build}
             </div>
           ))}
@@ -72,7 +75,10 @@ export default async function ClassDetailsPage({ params }: Props) {
         <h2 className="text-3xl">Ключевые навыки</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {classInfo.skills.map((skill) => (
-            <article key={skill.name} className="rounded-lg border border-[#2e6861] bg-[#0d2b2b] p-4">
+            <article
+              key={skill.name}
+              className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-4"
+            >
               <h3 className="text-lg">{skill.name}</h3>
               <p className="mt-2 text-sm text-muted">{skill.description}</p>
             </article>

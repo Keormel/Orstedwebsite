@@ -1,38 +1,48 @@
 import Link from "next/link";
+import { FaDiscord, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { SERVER } from "@/lib/constants";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-20 border-t border-[#2a4a53] bg-[#0a1a1f88]">
-      <div className="container-page grid gap-8 py-10 md:grid-cols-3">
-        <div className="space-y-3">
-          <p className="text-xl font-semibold">{SERVER.name}</p>
-          <p className="max-w-sm text-sm leading-relaxed text-muted">
-            Атмосферный RPG-сервер во вселенной Mushoku Tensei: сюжет, классы, гильдейские войны и честная экономика.
-          </p>
-          <Link href="/start" className="selection-link inline-flex text-sm">
-            Начать играть
-          </Link>
+    <footer className="site-footer">
+      <div className="site-footer__stone" aria-hidden="true" />
+      <div className="container-page site-footer__brand-row">
+        <div className="site-footer__logo" aria-hidden="true" />
+        <div>
+          <h2>{SERVER.name} © 2026</h2>
+          <p>Mushoku Reincarnation, made for adventurers.</p>
         </div>
-        <div className="space-y-3">
-          <p className="text-sm font-semibold text-white">Навигация</p>
-          <div className="flex flex-col gap-2 text-sm text-muted">
-            <Link href="/start">Как начать</Link>
-            <Link href="/rules">Правила</Link>
-            <Link href="/news">Новости</Link>
-            <Link href="/classes">Классы</Link>
-            <Link href="/donate">Донат</Link>
-          </div>
-        </div>
-        <div className="space-y-3">
-          <p className="text-sm font-semibold text-white">Подключение</p>
-          <p className="text-sm text-muted">IP: {SERVER.ip}</p>
-          <p className="text-sm text-muted">Версия: {SERVER.version}</p>
-          <Link href={SERVER.discordInvite} className="selection-link inline-flex text-sm">
-            Discord поддержки
-          </Link>
+        <div className="site-footer__socials" aria-label="Социальные сети">
+          <Link href={SERVER.discordInvite} aria-label="Discord"><FaDiscord /></Link>
+          <Link href="/" aria-label="Instagram"><FaInstagram /></Link>
+          <Link href="/" aria-label="YouTube"><FaYoutube /></Link>
+          <Link href="/" aria-label="TikTok"><FaTiktok /></Link>
         </div>
       </div>
+      <div className="container-page site-footer__grid">
+        <div>
+          <h3>ССЫЛКИ</h3>
+          <Link href="/donate">Магазин</Link>
+          <Link href="/news">Блог</Link>
+          <Link href="/lore">Вики</Link>
+          <Link href="/start">Голосовать</Link>
+        </div>
+        <div>
+          <h3>СООБЩЕСТВО</h3>
+          <Link href={SERVER.discordInvite}>Discord</Link>
+          <Link href="/events">Предложения</Link>
+          <Link href="/classes">Стафф</Link>
+        </div>
+        <div>
+          <h3>ПРАВОВОЕ</h3>
+          <Link href="/rules">Правила</Link>
+          <Link href="/rules">Условия использования</Link>
+          <p>IP: {SERVER.ip}</p>
+        </div>
+      </div>
+      <p className="container-page site-footer__disclaimer">
+        We are not affiliated with Mojang AB or Microsoft. This is a fan inspired Minecraft RPG project.
+      </p>
     </footer>
   );
 }

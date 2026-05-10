@@ -1,6 +1,6 @@
 # Web App
 
-Next.js frontend for Mushoku Reincarnation MVP.
+Next.js frontend for Orsted Project MVP.
 
 ## Scripts
 

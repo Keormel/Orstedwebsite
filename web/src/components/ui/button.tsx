@@ -9,12 +9,9 @@ type ButtonProps = {
 };
 
 const styles: Record<NonNullable<ButtonProps["variant"]>, string> = {
-  primary:
-    "border border-[#8be8d5] bg-[var(--accent)] text-[#032019] shadow-[0_8px_24px_rgba(24,99,87,0.28)] hover:bg-[#41d7b4] active:bg-[#24ad8b]",
-  secondary:
-    "border border-[#3f8f83] bg-[#102c2d] text-[var(--foreground)] hover:bg-[#173739]",
-  ghost:
-    "border border-[#36595f] bg-transparent text-[var(--muted)] hover:border-[var(--accent)] hover:text-white",
+  primary: "btn-green",
+  secondary: "btn-discord",
+  ghost: "btn-gray",
 };
 
 export function Button({
@@ -24,7 +21,7 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const classes =
-    `btn-arcane rune-hover inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 ${styles[variant]} ${className}`.trim();
+    `btn-arcane rune-hover inline-flex items-center justify-center px-4 py-2 transition-[filter] duration-75 ${styles[variant]} ${className}`.trim();
 
   if (!href) {
     return <button className={classes}>{children}</button>;

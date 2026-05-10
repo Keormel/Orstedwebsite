@@ -6,7 +6,7 @@ import { SERVER } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Начать играть",
   description:
-    "Пошаговый старт на Mushoku Reincarnation: установка сборки, подключение к серверу и Discord.",
+    "Пошаговый старт на Orsted Project: установка сборки, подключение к серверу и Discord.",
 };
 
 const troubleshooting = [
@@ -39,7 +39,7 @@ export default function StartPage() {
         </Card>
         <Card title="2. Добавление IP">
           <p className="text-sm text-muted">Открой Multiplayer и добавь сервер:</p>
-          <code className="mt-3 inline-flex rounded bg-[#0e2a2d] px-2 py-1 text-sm">
+          <code className="mt-3 inline-flex rounded border border-[var(--color-border)] bg-[var(--color-bg-surface)] px-2 py-1 text-sm text-[var(--color-text-primary)]">
             {SERVER.ip}
           </code>
         </Card>

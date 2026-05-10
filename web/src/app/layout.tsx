@@ -20,24 +20,24 @@ const exo2 = Exo_2({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://mushoku-reincarnation.ru",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://mtminecraft.online",
   ),
   title: {
-    default: "Mushoku Reincarnation | Minecraft сервер",
-    template: "%s | Mushoku Reincarnation",
+    default: "Orsted Project | Minecraft сервер",
+    template: "%s | Orsted Project",
   },
   description:
-    "Эпический Minecraft сервер во вселенной Mushoku Tensei: классы, гильдии, войны сезонов, ивенты и честный донат без P2W.",
+    "Minecraft RPG сервер Orsted Project: классы, гильдии, войны сезонов, ивенты и честный донат без P2W.",
   openGraph: {
-    title: "Mushoku Reincarnation | Minecraft сервер",
+    title: "Orsted Project | Minecraft сервер",
     description:
-      "Академия магии, гильдия приключенцев и сезонный прогресс. Подключайся за пару минут.",
+      "Классы, гильдии и сезонный прогресс. Подключайся за пару минут.",
     type: "website",
     locale: "ru_RU",
   },
   keywords: [
     "minecraft сервер",
-    "mushoku tensei",
+    "orsted project",
     "рпг сервер",
     "магия",
     "гильдии",

@@ -37,7 +37,7 @@ export function TrailerGallery() {
       </div>
       <button
         onClick={() => setOpen(true)}
-        className="mt-4 w-full rounded-xl border border-[#5cc9f7] bg-[#10324f] px-5 py-3 text-sm font-semibold sm:w-auto"
+        className="mt-4 w-full rounded-xl border border-[var(--color-btn-primary-bg)] bg-[var(--color-btn-primary-bg)] px-5 py-3 text-sm font-semibold text-[var(--color-btn-primary-text)] transition-colors hover:bg-[var(--color-btn-primary-hover)] sm:w-auto"
       >
         Смотреть трейлер
       </button>

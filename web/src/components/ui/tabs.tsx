@@ -30,8 +30,8 @@ export function Tabs({ items }: TabsProps) {
               onClick={() => setActive(item.id)}
               className={`shrink-0 whitespace-nowrap rounded-lg border px-4 py-2.5 text-sm font-medium transition ${
                 active === item.id
-                  ? "border-[var(--accent)] bg-[#15393a] text-white"
-                  : "border-[#36595f] text-muted hover:text-white"
+                    ? "border-[var(--color-accent)] bg-[var(--color-bg-elevated)] text-[var(--color-text-primary)] shadow-[0_6px_16px_rgba(90,112,200,0.16)]"
+                    : "border-[var(--color-border)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-surface)] hover:text-[var(--color-text-primary)]"
               }`}
             >
               {item.label}
