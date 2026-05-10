@@ -27,13 +27,11 @@ export function LaunchCountdown() {
     return () => window.clearInterval(interval);
   }, []);
 
-  const parts = getParts();
-
   return (
     <div className="launch-countdown" aria-label="Таймер до старта">
-      {parts.map((part) => (
+      {getParts().map((part) => (
         <div className="launch-countdown-block" key={part.label}>
-          <span className="launch-countdown-value">
+          <span key={part.value} className="launch-countdown-value">
             {String(part.value).padStart(2, "0")}
           </span>
           <span className="launch-countdown-label">{part.label}</span>

@@ -50,6 +50,1060 @@
   --font-body: "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
+/* Mushoku Reincarnation Minecraft redesign */
+:root {
+  --sky: #87ceeb;
+  --sky-light: #c6d4f0;
+  --sky-dark: #5b8dd9;
+  --night: #1a3a5c;
+  --night-deep: #0d1f33;
+  --grass: #5aab41;
+  --grass-dark: #3d7a2b;
+  --dirt: #8b6340;
+  --stone: #8f8f8f;
+  --gold: #ffff55;
+  --text-dark: #1a1a2e;
+  --text-light: #ffffff;
+  --color-bg-base: var(--sky);
+  --color-bg-surface: var(--sky-light);
+  --color-bg-elevated: #dce9f8;
+  --color-border: #2c3e50;
+  --color-text-primary: var(--text-dark);
+  --color-text-secondary: #24394f;
+  --color-text-muted: #33516d;
+  --color-link: var(--sky-dark);
+  --font-pixel: "Press Start 2P", monospace;
+  --font-display: var(--font-pixel);
+  --font-body: "VT323", ui-monospace, monospace;
+}
+
+html,
+body {
+  background: var(--sky);
+}
+
+body {
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+.navbar,
+.btn-arcane,
+.msh-kicker,
+.msh-section-title,
+.msh-read-link,
+.msh-text-link,
+.site-footer h2,
+.site-footer h3 {
+  font-family: var(--font-pixel);
+  letter-spacing: 0;
+}
+
+img,
+iframe,
+.surface,
+.msh-class-card,
+.msh-blog-card,
+.msh-join-panel,
+.msh-steps article,
+.accordion__item,
+.site-footer__socials a {
+  border-radius: 0 !important;
+}
+
+.surface,
+.msh-class-card,
+.msh-blog-card,
+.msh-join-panel,
+.msh-steps article,
+.accordion__item,
+.site-footer__socials a,
+.msh-online {
+  border: 3px solid #2c3e50;
+  box-shadow: 5px 5px 0 #1a1a2e;
+}
+
+.btn-arcane,
+.copy-ip-button,
+.navbar__ip,
+.navbar__discord,
+.msh-read-link {
+  border: 3px solid #1a1a1a !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.35), 4px 4px 0 #1a1a2e;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  transition: transform 0.05s, box-shadow 0.05s;
+}
+
+.btn-arcane:hover,
+.copy-ip-button:hover,
+.navbar__ip:hover,
+.navbar__discord:hover,
+.msh-read-link:hover {
+  transform: translateY(2px);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.35), 2px 2px 0 #1a1a2e;
+}
+
+.btn-green {
+  background: var(--grass) !important;
+  border-color: var(--grass-dark) !important;
+  color: #fff !important;
+}
+
+.btn-discord,
+.navbar__discord {
+  background: #5865f2 !important;
+  border-color: #3a46c9 !important;
+  color: #fff !important;
+}
+
+.btn-gray {
+  background: #9d9d9d !important;
+  border-color: #6b6b6b !important;
+  color: #fff !important;
+}
+
+.container-page {
+  width: min(1180px, calc(100vw - 32px));
+  margin-inline: auto;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  min-height: 60px;
+  padding: 0 24px;
+  background: var(--night);
+  border-bottom: 3px solid var(--night-deep);
+  color: #fff;
+}
+
+.navbar__left,
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navbar__left {
+  justify-content: flex-start;
+}
+
+.navbar__center {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar__right {
+  justify-content: flex-end;
+}
+
+.navbar__link,
+.navbar__dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #fff;
+  font-size: 9px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.navbar__link:hover,
+.navbar__dropdown-toggle:hover,
+.navbar__link--active {
+  border-bottom-color: var(--gold);
+  color: var(--gold);
+}
+
+.navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+}
+
+.navbar__logo-icon {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #0d1f33;
+  background: var(--grass) url("/assets/orsted-logo.svg") center / cover no-repeat;
+  image-rendering: pixelated;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.navbar__dropdown {
+  position: relative;
+}
+
+.navbar__dropdown-arrow {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.18s;
+}
+
+.navbar__dropdown--open .navbar__dropdown-arrow,
+.navbar__dropdown:hover .navbar__dropdown-arrow,
+.navbar__dropdown-toggle--open .navbar__dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.navbar__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1001;
+  display: grid;
+  min-width: 184px;
+  background: #0d2440;
+  border: 1px solid #5b8dd9;
+  box-shadow: 4px 4px 0 #000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.16s, transform 0.16s;
+}
+
+.navbar__dropdown:hover .navbar__dropdown-menu,
+.navbar__dropdown--open .navbar__dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.navbar__dropdown-item {
+  padding: 10px 20px;
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+}
+
+.navbar__dropdown-item:hover {
+  color: var(--gold);
+}
+
+.navbar__discord {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+}
+
+.navbar__discord svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar__ip {
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 36px;
+  padding: 0;
+  background: #c6c6c6;
+  color: #1a1a1a;
+}
+
+.navbar__ip-value {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: var(--font-body);
+  font-size: 20px;
+}
+
+.navbar__ip-copy {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  background: var(--grass);
+  color: #fff;
+  font-size: 9px;
+}
+
+.navbar__ip--copied .navbar__ip-copy {
+  background: var(--grass-dark);
+}
+
+.navbar__burger {
+  display: none;
+  justify-self: end;
+  width: 42px;
+  height: 42px;
+  border: 3px solid #0d1f33;
+  background: transparent;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.navbar__burger span {
+  width: 24px;
+  height: 3px;
+  background: #fff;
+}
+
+.navbar__mobile {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-height: 0;
+  overflow: hidden;
+  margin: 0 -24px;
+  background: var(--night);
+  opacity: 0;
+  transition: max-height 0.28s, opacity 0.22s, padding 0.22s;
+}
+
+.navbar__mobile--open {
+  max-height: 520px;
+  padding: 16px 24px 20px;
+  opacity: 1;
+}
+
+.navbar__mobile-links,
+.navbar__mobile-actions {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.mushoku-page {
+  overflow: hidden;
+  background: var(--sky);
+}
+
+.msh-hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 96px 16px 72px;
+  isolation: isolate;
+  background-image:
+    linear-gradient(rgba(135, 206, 235, 0.7), rgba(198, 212, 240, 0.9)),
+    url("https://source.unsplash.com/1920x1080/?minecraft,sky,landscape");
+  background-size: cover;
+  background-position: center;
+}
+
+.msh-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  text-align: center;
+}
+
+.msh-kicker {
+  color: var(--gold);
+  font-size: 12px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.msh-hero h1 {
+  margin-top: 18px;
+  color: #fff;
+  font-size: clamp(32px, 6vw, 82px);
+  line-height: 1.18;
+  text-shadow: 6px 6px 0 #1a1a2e;
+}
+
+.msh-hero p {
+  margin-top: 18px;
+  color: #fff;
+  font-size: clamp(22px, 2.2vw, 34px);
+  line-height: 1.15;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.msh-hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.launch-countdown {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.launch-countdown-block {
+  min-width: 104px;
+  padding: 12px 14px;
+  background: var(--night);
+  border: 3px solid #2c3e50;
+  box-shadow: 5px 5px 0 #1a1a2e;
+  text-align: center;
+}
+
+.launch-countdown-value {
+  display: block;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 48px;
+  line-height: 0.9;
+  animation: timer-pop 0.22s ease-out;
+}
+
+.launch-countdown-label {
+  display: block;
+  margin-top: 8px;
+  color: var(--gold);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+}
+
+.msh-hero-character {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: min(300px, 28vw);
+  height: min(500px, 58vh);
+  object-fit: cover;
+  border: 3px solid #2c3e50;
+  box-shadow: 5px 5px 0 #1a1a2e;
+}
+
+.msh-hero-character-left {
+  left: 4vw;
+}
+
+.msh-hero-character-right {
+  right: 4vw;
+}
+
+.msh-cloud {
+  position: absolute;
+  z-index: 1;
+  width: 190px;
+  height: 48px;
+  background:
+    linear-gradient(#fff 0 0) 0 16px / 190px 16px no-repeat,
+    linear-gradient(#fff 0 0) 32px 0 / 64px 16px no-repeat,
+    linear-gradient(#fff 0 0) 104px 8px / 64px 16px no-repeat;
+  opacity: 0.85;
+  animation: cloud-float 28s linear infinite;
+}
+
+.msh-cloud-one {
+  top: 18%;
+  left: -220px;
+}
+
+.msh-cloud-two {
+  top: 34%;
+  left: -420px;
+  transform: scale(1.35);
+  animation-duration: 38s;
+  animation-delay: -10s;
+}
+
+.divider-grass {
+  height: 48px;
+  background:
+    repeating-linear-gradient(90deg, #5aab41 0 16px, #4a9a35 16px 32px) 0 0 / auto 16px,
+    repeating-linear-gradient(90deg, #8b6340 0 16px, #7a5530 16px 32px) 0 16px / auto 32px;
+  border-block: 3px solid #1a1a1a;
+}
+
+.msh-section {
+  padding: clamp(56px, 8vw, 110px) 0;
+}
+
+.msh-section-title {
+  margin: 0 0 32px;
+  color: #fff;
+  font-size: clamp(24px, 4vw, 56px);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 5px 5px 0 #1a1a2e;
+}
+
+.msh-lead {
+  color: #fff;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.msh-classes {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0 2px, transparent 2px 32px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 2px, transparent 2px 32px),
+    var(--stone);
+}
+
+.msh-class-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.msh-class-card {
+  position: relative;
+  min-height: 300px;
+  padding: 158px 18px 20px;
+  background: var(--sky-light);
+  color: var(--text-dark);
+  overflow: visible;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.msh-class-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 8px 8px 0 #1a1a2e;
+}
+
+.msh-class-card img {
+  position: absolute;
+  left: 50%;
+  bottom: 126px;
+  width: 190px;
+  height: 260px;
+  object-fit: cover;
+  transform: translateX(-50%);
+  image-rendering: pixelated;
+}
+
+.msh-class-card h3 {
+  color: var(--night);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.msh-class-card p {
+  margin-top: 10px;
+  color: #24394f;
+  font-size: 20px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.msh-join {
+  background-image:
+    linear-gradient(rgba(26, 58, 92, 0.85), rgba(26, 58, 92, 0.85)),
+    url("https://source.unsplash.com/1920x600/?minecraft,map,fantasy"),
+    url("https://source.unsplash.com/1920x600/?minecraft,world,biome");
+  background-size: cover;
+  background-position: center;
+}
+
+.msh-join-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 36px;
+  align-items: center;
+  padding: clamp(24px, 4vw, 46px);
+  background: rgba(13, 31, 51, 0.72);
+}
+
+.msh-join-panel .msh-section-title {
+  text-align: left;
+}
+
+.msh-join-ip {
+  margin-top: 24px;
+}
+
+.msh-steps {
+  display: grid;
+  gap: 18px;
+}
+
+.msh-steps article {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--sky-light);
+}
+
+.msh-steps span {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  background: var(--grass);
+  border: 3px solid var(--grass-dark);
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 18px;
+}
+
+.msh-steps p {
+  color: var(--text-dark);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.copy-ip-button {
+  background: #c6c6c6;
+  color: var(--text-dark);
+}
+
+.copy-ip-value {
+  font-family: var(--font-body);
+  font-size: 22px;
+}
+
+.copy-ip-action {
+  background: var(--grass);
+  color: #fff;
+}
+
+.msh-blog {
+  background: linear-gradient(180deg, var(--sky), var(--sky-light));
+}
+
+.msh-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.msh-text-link {
+  color: var(--night);
+  font-size: 11px;
+}
+
+.msh-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.msh-blog-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--sky-light);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.msh-blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 0 #1a1a2e;
+}
+
+.msh-blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.msh-blog-card > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.msh-blog-card time {
+  color: var(--sky-dark);
+  font-size: 20px;
+}
+
+.msh-blog-card h3 {
+  margin-top: 10px;
+  color: var(--night);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.msh-blog-card p {
+  margin-top: 10px;
+  color: #24394f;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.msh-read-link {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 10px 14px;
+  background: var(--grass);
+  border-color: var(--grass-dark) !important;
+  color: #fff;
+}
+
+.msh-faq {
+  background: var(--sky);
+}
+
+.msh-faq .container-page {
+  max-width: 800px;
+}
+
+.accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.accordion__item {
+  background: var(--sky-light);
+  overflow: hidden;
+  transition: border-color 0.18s;
+}
+
+.accordion__item--open {
+  border-color: var(--grass);
+}
+
+.accordion__trigger {
+  display: flex;
+  width: 100%;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border: 0;
+  background: transparent;
+  color: var(--night);
+  font-size: 10px;
+  text-align: left;
+}
+
+.accordion__icon {
+  transition: transform 0.2s;
+}
+
+.accordion__item--open .accordion__icon {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+}
+
+.accordion__item--open .accordion__content {
+  max-height: 240px;
+}
+
+.accordion__content p {
+  padding: 0 18px 18px;
+  color: #24394f;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.msh-discord {
+  position: relative;
+  padding: clamp(60px, 8vw, 110px) 0;
+  background-image:
+    linear-gradient(rgba(13, 31, 51, 0.92), rgba(13, 31, 51, 0.92)),
+    url("https://source.unsplash.com/1920x600/?minecraft,night,ruins");
+  background-size: cover;
+  background-position: center;
+}
+
+.msh-discord::before,
+.msh-discord::after,
+.site-footer__stone {
+  content: "";
+  display: block;
+  height: 32px;
+  background:
+    repeating-linear-gradient(90deg, #8f8f8f 0 32px, #777 32px 64px);
+  border-block: 3px solid #1a1a1a;
+}
+
+.msh-discord::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.msh-discord::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.msh-discord-grid {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) 220px;
+  align-items: center;
+  gap: 34px;
+}
+
+.msh-discord .msh-section-title {
+  text-align: left;
+}
+
+.msh-online {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 22px;
+  background: var(--night);
+  color: #fff;
+}
+
+.msh-online span {
+  width: 16px;
+  height: 16px;
+  background: #70ff55;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #70ff55;
+  animation: online-pulse 1.2s infinite;
+}
+
+.msh-online strong {
+  font-family: var(--font-pixel);
+  font-size: 34px;
+}
+
+.msh-online p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.msh-discord-logo {
+  width: 220px;
+  height: 220px;
+  border: 3px solid #3a46c9;
+  background: #5865f2;
+  box-shadow: 5px 5px 0 #1a1a2e;
+  clip-path: polygon(12% 0, 88% 0, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0 88%, 0 12%);
+}
+
+.msh-discord-logo::before {
+  content: "";
+  display: block;
+  width: 58%;
+  height: 42%;
+  margin: 29% auto 0;
+  background: #fff;
+  clip-path: polygon(8% 18%, 28% 0, 72% 0, 92% 18%, 100% 74%, 74% 100%, 26% 100%, 0 74%);
+}
+
+.site-footer {
+  background: var(--night-deep);
+  color: #fff;
+}
+
+.site-footer__brand-row {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  padding: 34px 0 24px;
+}
+
+.site-footer__logo {
+  width: 64px;
+  height: 64px;
+  border: 3px solid #2c3e50;
+  background: var(--grass) url("/assets/orsted-logo.svg") center / cover no-repeat;
+  box-shadow: 5px 5px 0 #1a1a2e;
+}
+
+.site-footer h2 {
+  color: #fff;
+  font-size: 16px;
+}
+
+.site-footer h3 {
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.site-footer p,
+.site-footer a {
+  color: #d6e7f7;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.site-footer a:hover,
+.site-footer__socials a:hover {
+  color: var(--gold);
+}
+
+.site-footer__socials {
+  display: flex;
+  gap: 10px;
+}
+
+.site-footer__socials a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background: var(--night);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  padding: 28px 0;
+}
+
+.site-footer__grid a,
+.site-footer__grid p {
+  display: block;
+  margin-top: 8px;
+}
+
+.site-footer__disclaimer {
+  padding: 0 0 34px;
+  color: #9db3c6;
+  font-size: 16px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes cloud-float {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100vw + 620px));
+  }
+}
+
+@keyframes timer-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes online-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 1200px) {
+  .msh-class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 58px;
+  }
+
+  .msh-discord-grid {
+    grid-template-columns: 140px minmax(0, 1fr);
+  }
+
+  .msh-discord-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 60px;
+  }
+
+  .navbar__left,
+  .navbar__right {
+    display: none;
+  }
+
+  .navbar__center {
+    justify-content: flex-start;
+  }
+
+  .navbar__burger {
+    display: inline-flex;
+  }
+
+  .navbar__logo-text {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .msh-hero {
+    min-height: 760px;
+  }
+
+  .msh-hero-character {
+    display: none;
+  }
+
+  .msh-class-grid,
+  .msh-blog-grid,
+  .msh-join-panel,
+  .msh-discord-grid,
+  .site-footer__brand-row,
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .msh-class-grid {
+    gap: 62px;
+  }
+
+  .msh-join-panel .msh-section-title,
+  .msh-discord .msh-section-title {
+    text-align: center;
+  }
+
+  .msh-online,
+  .msh-discord-logo,
+  .site-footer__socials {
+    justify-self: center;
+  }
+}
+
 @theme inline {
   --color-background: var(--color-bg-base);
   --color-foreground: var(--color-text-primary);
@@ -2794,5 +3848,838 @@ footer a {
   .navbar__ip-value {
     min-width: 0;
     max-width: none;
+  }
+}
+
+/* Final Mushoku overrides: keep these last */
+body {
+  background: var(--sky) !important;
+  color: var(--text-dark) !important;
+  font-family: var(--font-body) !important;
+  font-size: 22px !important;
+  letter-spacing: 0 !important;
+}
+
+.navbar {
+  top: 0 !important;
+  width: 100% !important;
+  min-height: 60px !important;
+  margin: 0 !important;
+  padding: 0 24px !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  background: var(--night) !important;
+  border: 0 !important;
+  border-bottom: 3px solid var(--night-deep) !important;
+  box-shadow: none !important;
+}
+
+.navbar::before,
+.navbar::after {
+  display: none !important;
+}
+
+.navbar__left,
+.navbar__right {
+  display: flex !important;
+  gap: 18px !important;
+  padding: 0 !important;
+}
+
+.navbar__center {
+  justify-content: center !important;
+}
+
+.navbar__link,
+.navbar__dropdown-toggle {
+  min-height: 38px !important;
+  color: #fff !important;
+  font-size: 9px !important;
+  border-bottom: 2px solid transparent !important;
+  text-shadow: none !important;
+}
+
+.navbar__link:hover,
+.navbar__dropdown-toggle:hover,
+.navbar__link--active {
+  color: var(--gold) !important;
+  border-bottom-color: var(--gold) !important;
+  transform: none !important;
+}
+
+.navbar__logo {
+  width: auto !important;
+  height: auto !important;
+  display: inline-flex !important;
+  gap: 10px !important;
+}
+
+.navbar__logo-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border: 2px solid #0d1f33 !important;
+  background: var(--grass) url("/assets/orsted-logo.svg") center / cover no-repeat !important;
+  box-shadow: 2px 2px 0 #000 !important;
+}
+
+.navbar__logo-text {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  clip: auto !important;
+  color: #fff !important;
+  font-size: 10px !important;
+}
+
+.navbar__discord {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.navbar__ip {
+  min-height: 36px !important;
+  background: #c6c6c6 !important;
+  color: #1a1a1a !important;
+}
+
+.mushoku-page {
+  overflow: hidden;
+  background: var(--sky);
+}
+
+.msh-hero {
+  min-height: 100vh !important;
+  background-image:
+    linear-gradient(rgba(135, 206, 235, 0.7), rgba(198, 212, 240, 0.9)),
+    url("https://source.unsplash.com/1920x1080/?minecraft,sky,landscape") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.msh-classes {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0 2px, transparent 2px 32px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 2px, transparent 2px 32px),
+    var(--stone) !important;
+}
+
+.msh-join {
+  background-image:
+    linear-gradient(rgba(26, 58, 92, 0.85), rgba(26, 58, 92, 0.85)),
+    url("https://source.unsplash.com/1920x600/?minecraft,map,fantasy"),
+    url("https://source.unsplash.com/1920x600/?minecraft,world,biome") !important;
+}
+
+.msh-discord {
+  background-image:
+    linear-gradient(rgba(13, 31, 51, 0.92), rgba(13, 31, 51, 0.92)),
+    url("https://source.unsplash.com/1920x600/?minecraft,night,ruins") !important;
+}
+
+.msh-section-title,
+.msh-hero h1 {
+  color: #fff !important;
+  font-family: var(--font-pixel) !important;
+  text-shadow: 5px 5px 0 #1a1a2e !important;
+}
+
+.msh-class-card,
+.msh-blog-card,
+.msh-join-panel,
+.msh-steps article,
+.accordion__item {
+  border-radius: 0 !important;
+  border: 3px solid #2c3e50 !important;
+  box-shadow: 5px 5px 0 #1a1a2e !important;
+}
+
+.msh-class-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 8px 8px 0 #1a1a2e !important;
+}
+
+.msh-blog-card:hover {
+  transform: translateY(-4px) !important;
+}
+
+.site-footer {
+  margin-top: 0 !important;
+  background: var(--night-deep) !important;
+  border-top: 0 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+
+  .navbar__left,
+  .navbar__right {
+    display: none !important;
+  }
+
+  .navbar__burger {
+    display: inline-flex !important;
+  }
+}
+
+/* Professional responsive layout hardening */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  line-height: 1.35 !important;
+}
+
+main,
+section,
+header,
+footer,
+nav,
+article,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+button,
+span {
+  min-width: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+button,
+span,
+li,
+strong {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+.container-page {
+  width: min(1180px, calc(100vw - 32px)) !important;
+  max-width: 100% !important;
+}
+
+.mushoku-page,
+.msh-section,
+.msh-hero,
+.msh-discord,
+.site-footer {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.msh-section,
+.msh-discord {
+  padding-block: clamp(56px, 7vw, 96px) !important;
+}
+
+.msh-section-title {
+  margin: 0 0 clamp(22px, 3vw, 34px) !important;
+  font-size: clamp(24px, 4.4vw, 52px) !important;
+  line-height: 1.18 !important;
+  text-wrap: balance;
+}
+
+.msh-lead,
+.msh-hero-content > p:not(.msh-kicker),
+.accordion__content p,
+.msh-blog-card p,
+.msh-class-card p,
+.msh-steps p,
+.site-footer p,
+.site-footer a {
+  font-size: clamp(19px, 1.7vw, 24px) !important;
+  line-height: 1.24 !important;
+}
+
+.msh-hero {
+  min-height: calc(100svh - 60px) !important;
+  padding: clamp(40px, 7vw, 84px) 0 !important;
+}
+
+.msh-hero-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(130px, 0.7fr) minmax(0, 1.7fr) minmax(130px, 0.7fr);
+  align-items: end;
+  gap: clamp(16px, 3vw, 38px);
+}
+
+.msh-hero-content {
+  width: 100%;
+  max-width: 760px;
+  justify-self: center;
+  padding: clamp(18px, 3vw, 30px);
+}
+
+.msh-hero h1 {
+  margin-top: 14px !important;
+  font-size: clamp(28px, 5.4vw, 64px) !important;
+  line-height: 1.2 !important;
+}
+
+.msh-kicker {
+  font-size: clamp(9px, 1.3vw, 12px) !important;
+}
+
+.msh-hero-character {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0;
+  align-self: end;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.msh-hero-character img {
+  width: 100%;
+  max-height: min(500px, 58svh);
+  aspect-ratio: 3 / 5;
+  object-fit: cover;
+  border: 3px solid #2c3e50;
+  box-shadow: 5px 5px 0 #1a1a2e;
+}
+
+.launch-countdown {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(72px, 1fr));
+  gap: clamp(8px, 1.4vw, 12px) !important;
+  width: min(560px, 100%);
+  margin-inline: auto;
+}
+
+.launch-countdown-block {
+  min-width: 0 !important;
+  padding: clamp(9px, 1.6vw, 14px) clamp(8px, 1.4vw, 14px) !important;
+}
+
+.launch-countdown-value {
+  font-size: clamp(34px, 6vw, 48px) !important;
+}
+
+.launch-countdown-label {
+  font-size: clamp(7px, 1vw, 9px) !important;
+}
+
+.msh-hero-actions {
+  gap: 12px !important;
+}
+
+.msh-hero-actions .btn-arcane,
+.msh-discord .btn-arcane {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.msh-class-grid,
+.msh-blog-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 26px) !important;
+  align-items: stretch;
+}
+
+.msh-blog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.msh-class-card {
+  position: relative !important;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0 !important;
+  padding: clamp(14px, 2vw, 18px) !important;
+  overflow: hidden !important;
+  align-content: start;
+}
+
+.msh-class-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 3px solid #2c3e50;
+  background: var(--sky);
+}
+
+.msh-class-card__media img,
+.msh-class-card > img {
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  object-fit: cover;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.msh-class-card__body {
+  display: block;
+  padding-top: 14px;
+}
+
+.msh-class-card h3,
+.msh-blog-card h3 {
+  font-size: clamp(10px, 1.2vw, 12px) !important;
+  line-height: 1.55 !important;
+}
+
+.msh-join-panel {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: clamp(22px, 4vw, 38px) !important;
+  padding: clamp(18px, 3.6vw, 42px) !important;
+}
+
+.msh-join-copy,
+.msh-discord-copy {
+  display: grid;
+  align-content: center;
+}
+
+.msh-join-panel .msh-section-title,
+.msh-discord .msh-section-title {
+  text-align: left !important;
+}
+
+.msh-join-ip,
+.copy-ip-button {
+  max-width: 100%;
+}
+
+.copy-ip-button {
+  width: fit-content;
+}
+
+.copy-ip-value,
+.copy-ip-action {
+  min-width: 0;
+  max-width: min(52vw, 260px);
+  white-space: normal;
+}
+
+.msh-steps article {
+  grid-template-columns: auto minmax(0, 1fr) !important;
+}
+
+.msh-blog-card {
+  min-height: 0;
+}
+
+.msh-blog-card img {
+  height: clamp(160px, 18vw, 200px) !important;
+}
+
+.msh-blog-card > div {
+  min-height: 0;
+}
+
+.msh-read-link {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.accordion {
+  width: min(800px, 100%);
+  margin-inline: auto;
+}
+
+.accordion__trigger {
+  min-height: 0 !important;
+  align-items: flex-start !important;
+  line-height: 1.5 !important;
+}
+
+.accordion__trigger > span:first-child {
+  flex: 1 1 auto;
+}
+
+.accordion__icon {
+  flex: 0 0 auto;
+}
+
+.accordion__item--open .accordion__content {
+  max-height: 420px !important;
+}
+
+.msh-discord-grid {
+  display: grid !important;
+  grid-template-columns: minmax(120px, 160px) minmax(0, 1fr) minmax(160px, 220px);
+  gap: clamp(22px, 4vw, 34px) !important;
+  align-items: center;
+}
+
+.msh-discord-logo {
+  width: min(220px, 100%) !important;
+  height: auto !important;
+  aspect-ratio: 1;
+}
+
+.msh-online {
+  width: 100%;
+  max-width: 170px;
+}
+
+.site-footer__brand-row,
+.site-footer__grid {
+  gap: clamp(20px, 4vw, 34px) !important;
+}
+
+.site-footer__brand-row {
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+}
+
+.site-footer__socials {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.site-footer__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.mobile-nav-panel,
+.navbar__mobile,
+.navbar__dropdown-menu {
+  max-width: 100%;
+}
+
+.navbar__mobile .navbar__dropdown {
+  display: grid;
+  justify-items: center;
+}
+
+.navbar__mobile .navbar__dropdown-menu {
+  position: static !important;
+  min-width: 0 !important;
+  width: min(260px, calc(100vw - 48px));
+  margin-top: 8px;
+}
+
+@media (max-width: 1200px) {
+  .navbar {
+    gap: 14px;
+  }
+
+  .navbar__left,
+  .navbar__right {
+    gap: 12px !important;
+  }
+
+  .navbar__ip-value {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .msh-hero-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  }
+
+  .msh-class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .msh-discord-grid {
+    grid-template-columns: minmax(110px, 150px) minmax(0, 1fr) !important;
+  }
+
+  .msh-discord-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .navbar {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+
+  .navbar__left,
+  .navbar__right {
+    display: none !important;
+  }
+
+  .navbar__center {
+    justify-content: flex-start !important;
+  }
+
+  .navbar__burger {
+    display: inline-flex !important;
+  }
+
+  .navbar__mobile {
+    display: grid;
+  }
+}
+
+@media (max-width: 900px) {
+  .msh-hero-layout,
+  .msh-join-panel,
+  .msh-discord-grid,
+  .site-footer__brand-row,
+  .site-footer__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .msh-hero-character {
+    display: none !important;
+  }
+
+  .msh-hero-content {
+    max-width: 720px;
+  }
+
+  .msh-join-panel .msh-section-title,
+  .msh-discord .msh-section-title,
+  .msh-section-head {
+    text-align: center !important;
+  }
+
+  .msh-section-head {
+    justify-content: center;
+  }
+
+  .msh-online,
+  .site-footer__logo,
+  .site-footer__socials {
+    justify-self: center;
+  }
+
+  .site-footer__brand-row,
+  .site-footer__grid,
+  .site-footer__disclaimer {
+    text-align: center;
+  }
+
+  .site-footer__socials {
+    justify-content: center;
+  }
+}
+
+/* Cross-page overflow and alignment polish */
+.surface,
+.fancy-border,
+.class-lane,
+.class-stage,
+.class-matrix-card,
+.class-flow-card,
+.class-hero,
+.class-pick,
+.race-token,
+.class-choice,
+.race-choice,
+.selection-panel,
+.field-base,
+.btn-arcane,
+.copy-ip-button {
+  max-width: 100%;
+}
+
+.surface,
+.class-lane,
+.class-stage,
+.class-matrix-card,
+.class-flow-card,
+.class-hero,
+.selection-panel {
+  overflow: hidden;
+}
+
+.class-hub-grid,
+.class-traits,
+.class-matrix-grid,
+.class-flow-grid,
+.join-steps,
+.grid {
+  min-width: 0;
+}
+
+.class-pick,
+.class-choice,
+.race-choice,
+.race-token,
+.selection-head,
+.server-status-row {
+  min-width: 0;
+}
+
+.class-pick-label,
+.class-pick-role,
+.class-stage-title,
+.class-stage-sub,
+.class-matrix-copy,
+.class-flow-card p,
+.lead-print,
+.lead-plain,
+.text-muted {
+  overflow-wrap: anywhere;
+}
+
+.field-base,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+.scroll-top-button,
+[class*="fixed"] {
+  max-width: calc(100vw - 24px);
+}
+
+@media (max-width: 767px) {
+  .container-page {
+    width: min(100% - 24px, 1180px) !important;
+  }
+
+  body {
+    font-size: 20px !important;
+  }
+
+  .navbar {
+    padding-inline: 12px !important;
+  }
+
+  .navbar__mobile {
+    margin-inline: -12px !important;
+    padding-inline: 12px !important;
+  }
+
+  .navbar__mobile-logo {
+    max-width: 100%;
+  }
+
+  .navbar__logo {
+    max-width: calc(100vw - 76px) !important;
+  }
+
+  .navbar__logo-text {
+    max-width: calc(100vw - 128px) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .navbar__ip {
+    width: min(100%, 320px);
+  }
+
+  .navbar__ip-value {
+    flex: 1 1 auto;
+    max-width: none;
+    white-space: normal;
+  }
+
+  .msh-hero {
+    min-height: auto !important;
+    padding-block: 58px !important;
+  }
+
+  .msh-hero-content {
+    padding: 18px 0;
+  }
+
+  .msh-hero h1 {
+    font-size: clamp(26px, 9vw, 42px) !important;
+  }
+
+  .launch-countdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .msh-class-grid,
+  .msh-blog-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .msh-class-card {
+    max-width: 430px;
+    margin-inline: auto;
+  }
+
+  .msh-steps article {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    padding: 14px;
+  }
+
+  .msh-steps span {
+    width: 48px;
+    height: 48px;
+  }
+
+  .copy-ip-button {
+    width: 100%;
+  }
+
+  .copy-ip-value,
+  .copy-ip-action {
+    justify-content: center;
+  }
+
+  .copy-ip-value {
+    flex: 1 1 auto;
+    max-width: none;
+  }
+
+  .msh-blog-card img {
+    height: 180px !important;
+  }
+
+  .accordion__trigger {
+    font-size: 9px !important;
+    padding: 13px 14px;
+  }
+
+  .accordion__content p {
+    padding-inline: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .msh-section {
+    padding-block: 44px !important;
+  }
+
+  .launch-countdown-value {
+    font-size: 32px !important;
+  }
+
+  .msh-hero-actions {
+    display: grid;
+  }
+
+  .msh-hero-actions .btn-arcane {
+    width: 100%;
   }
 }
