@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ru" className={`${pressStart.variable} ${vt323.variable} ${sourceSans.variable}`}>
       <body>
         <Header />
-        <main className="pt-[68px] lg:pt-[84px]">{children}</main>
+        <main className="pt-[112px] sm:pt-[132px]">{children}</main>
         <Footer />
       </body>
     </html>

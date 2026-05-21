@@ -12,13 +12,13 @@ export function HeroSection() {
   const y = useTransform(scrollY, [0, 600], [0, 54])
 
   return (
-    <section className="pixel-pattern relative flex min-h-screen items-center overflow-hidden pt-20">
+    <section className="pixel-pattern hero-ambient relative flex min-h-screen items-center overflow-hidden pt-20">
       <MagicEffects />
       <motion.div style={{ y }} className="absolute inset-x-0 top-24 mx-auto h-40 w-40 border-[18px] border-mc-magic/25 shadow-magic" />
       <div className="section-shell relative z-10 grid gap-8 py-16 text-center">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
           <motion.div
-            className="mx-auto mb-6 grid h-28 w-28 place-items-center border-2 border-mc-border bg-mc-card p-3 shadow-pixel-lg sm:h-36 sm:w-36"
+            className="mx-auto mb-6 grid h-28 w-28 place-items-center border-2 border-mc-border bg-mc-card/90 p-3 shadow-pixel-lg backdrop-blur-sm sm:h-36 sm:w-36"
             animate={{
               y: [0, -6, 0],
               filter: [
@@ -29,14 +29,7 @@ export function HeroSection() {
             }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <Image
-              src="/images/logo.png"
-              alt="OrstedProject"
-              width={128}
-              height={128}
-              priority
-              className="h-full w-full object-contain"
-            />
+            <Image src="/images/logo.png" alt="OrstedProject" width={128} height={128} priority className="h-full w-full object-contain" />
           </motion.div>
           <p className="pixel-title text-[clamp(1.15rem,3vw,2rem)] text-mc-blue">OrstedProject</p>
           <p className="mt-4 font-minecraft text-[clamp(0.56rem,1.5vw,0.85rem)] leading-6 text-mc-gold">
@@ -64,7 +57,7 @@ export function HeroSection() {
           ))}
         </motion.div>
         <motion.div
-          className="mx-auto max-w-4xl border-2 border-mc-text bg-mc-card px-4 py-3 font-retro text-2xl text-mc-text shadow-pixel-lg"
+          className="mx-auto max-w-4xl border-2 border-mc-text bg-mc-card/90 px-4 py-3 font-retro text-2xl text-mc-text shadow-pixel-lg backdrop-blur-sm"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45 }}
