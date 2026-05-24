@@ -89,7 +89,7 @@ export default function Header() {
 
           <nav className="hidden items-center gap-7 lg:flex">
             <a
-              href="https://forum.minefite.net/"
+              href="#"
               target="_blank"
               rel="noreferrer"
               className="group relative inline-flex items-center gap-2 font-pixel text-xs text-white transition-colors hover:text-gold"
@@ -134,7 +134,7 @@ export default function Header() {
             ))}
             <span className="h-6 w-px bg-white/15" />
             <a
-              href="https://map.minefite.net/"
+              href="#"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 font-pixel text-xs text-white/50 transition-colors hover:text-white"
