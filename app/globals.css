@@ -90,3 +90,116 @@ span {
     box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.45), 0 0 28px rgba(94, 234, 212, 0.18);
   }
 }
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+  animation: loader-exit 0.55s ease 1.9s forwards;
+}
+
+.site-loader__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(94, 234, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  animation: loader-grid 1.2s steps(4) infinite;
+}
+
+.site-loader__content {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  justify-items: center;
+  padding: 24px;
+}
+
+.site-loader__title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.12em;
+  color: #5eead4;
+  font-family: var(--font-press-start), monospace;
+  font-size: clamp(1.1rem, 5vw, 3.5rem);
+  line-height: 1.7;
+  text-align: center;
+  text-shadow:
+    0 0 10px rgba(94, 234, 212, 0.75),
+    0 0 28px rgba(94, 234, 212, 0.35);
+}
+
+.site-loader__title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scale(0.9);
+  animation: loader-letter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.site-loader__space {
+  width: 0.6em;
+}
+
+.site-loader__bar {
+  width: min(360px, 70vw);
+  height: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  background: rgba(94, 234, 212, 0.08);
+}
+
+.site-loader__bar span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #5eead4;
+  box-shadow: 0 0 18px rgba(94, 234, 212, 0.85);
+  transform: translateX(-100%);
+  animation: loader-bar 1.45s ease-out 0.35s forwards;
+}
+
+@keyframes loader-letter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.9);
+    filter: blur(6px);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.03);
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes loader-bar {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes loader-grid {
+  to {
+    transform: translate(28px, 28px);
+  }
+}
+
+@keyframes loader-exit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

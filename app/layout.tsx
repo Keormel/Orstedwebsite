@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SiteLoader from "@/components/SiteLoader";
 import "./globals.css";
 
 const pressStart = Press_Start_2P({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ru" className={`${pressStart.variable} ${vt323.variable}`}>
       <body>
+        <SiteLoader />
         <Header />
         <main>{children}</main>
         <Footer />
