@@ -23,7 +23,7 @@ export default function EventsPage() {
               key={event.title}
               delay={index * 0.1}
               className="grid gap-6 rounded-[20px] border border-white/10 bg-panel p-6 sm:grid-cols-[1fr_auto]"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.45), 0 0 24px rgba(226,181,58,0.14)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 24px rgba(94,234,212,0.14)" }}
             >
               <div>
                 <span className="rounded-full border border-gold/40 bg-gold/10 px-4 py-1 font-rune text-2xl text-gold">

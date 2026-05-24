@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import ServerInfoBar from "@/components/ServerInfoBar";
 import FAQ from "@/components/FAQ";
 import { faq } from "@/data/faq";
+import { internetPhoto } from "@/data/media";
 
 const steps = [
   {
@@ -35,7 +36,7 @@ export default function PlayPage() {
     <>
       <section className="mx-auto mt-16 w-full max-w-[1200px] px-4 sm:px-6">
         <MotionReveal className="relative overflow-hidden rounded-[32px] border border-white/10 bg-panel p-8 sm:p-12">
-          <div className="absolute inset-0 bg-[url('/images/hero-orsted.webp')] bg-cover bg-center opacity-25" />
+          <div className="absolute inset-0 bg-cover bg-center opacity-25" style={{ backgroundImage: `url(${internetPhoto})` }} />
           <div className="absolute inset-0 bg-gradient-to-r from-panel via-panel/85 to-panel/45" />
           <div className="relative z-10 max-w-3xl">
             <p className="font-rune text-3xl uppercase text-gold">старт игры</p>
@@ -66,7 +67,7 @@ export default function PlayPage() {
               key={step.title}
               delay={index * 0.1}
               className="rounded-[20px] border border-white/10 bg-panel p-6"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.45), 0 0 24px rgba(226,181,58,0.14)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 24px rgba(94,234,212,0.14)" }}
             >
               <step.icon className="mb-8 h-9 w-9 text-gold" />
               <h2 className="font-pixel text-sm leading-7 text-white">{step.title}</h2>
@@ -83,7 +84,7 @@ export default function PlayPage() {
               key={item.os}
               delay={index * 0.1}
               className="flex min-h-[220px] flex-col justify-between rounded-[20px] border border-white/10 bg-panelLift p-6"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.5), 0 0 28px rgba(226,181,58,0.18)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.5), 0 0 28px rgba(94,234,212,0.18)" }}
             >
               <div>
                 <Server className="mb-7 h-8 w-8 text-gold" />

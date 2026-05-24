@@ -1,3 +1,5 @@
+import { internetPhoto } from "./media";
+
 export type CharacterClass = {
   slug: string;
   title: string;
@@ -27,8 +29,8 @@ export const classes: CharacterClass[] = [
     role: "Молниеносные атаки, парирование, давление на одну цель.",
     description:
       "Класс для игроков, которые любят риск, скорость и честный поединок. Вдохновлён школой меча, где одно движение решает исход боя.",
-    image: "/images/server-ranoa.jpg",
-    accent: "#e2b53a",
+    image: internetPhoto,
+    accent: "#5eead4",
     stats: { power: 94, magic: 22, mobility: 88, support: 18 },
     abilities: [
       "Мгновенный рывок с усиленным первым ударом.",
@@ -46,8 +48,8 @@ export const classes: CharacterClass[] = [
     role: "Ответные удары, удержание линии, защита группы.",
     description:
       "Тактическая школа для тех, кто выигрывает не силой первого удара, а правильной позицией и терпением.",
-    image: "/images/gallery-01.jpg",
-    accent: "#76b7ff",
+    image: internetPhoto,
+    accent: "#7dd3fc",
     stats: { power: 62, magic: 35, mobility: 54, support: 82 },
     abilities: [
       "Защитная стойка с накоплением заряда за каждый блок.",
@@ -65,8 +67,8 @@ export const classes: CharacterClass[] = [
     role: "Ловушки, обман, выживание в хаотичных боях.",
     description:
       "Непредсказуемый путь для игроков, которые любят грязные победы, хитрые маршруты и неожиданные развороты боя.",
-    image: "/images/gallery-02.webp",
-    accent: "#9be36e",
+    image: internetPhoto,
+    accent: "#a7f3d0",
     stats: { power: 72, magic: 28, mobility: 80, support: 44 },
     abilities: [
       "Кувырок с короткой неуязвимостью.",
@@ -84,8 +86,8 @@ export const classes: CharacterClass[] = [
     role: "Стихийные цепочки, подготовка заклинаний, взрывной урон.",
     description:
       "Путь академии для тех, кто строит бой вокруг маны, дистанции и правильной последовательности стихий.",
-    image: "/images/server-fittoa.jpg",
-    accent: "#b18cff",
+    image: internetPhoto,
+    accent: "#f0abfc",
     stats: { power: 48, magic: 98, mobility: 36, support: 62 },
     abilities: [
       "Стихийная печать, усиливающая следующее заклинание.",
@@ -103,8 +105,8 @@ export const classes: CharacterClass[] = [
     role: "Лечение, очищение, благословения перед рейдом.",
     description:
       "Надёжный саппорт для партий, гильдий и сюжетных походов. Слабее в одиночку, но незаменим в долгих вылазках.",
-    image: "/images/gallery-03.webp",
-    accent: "#7ff0c8",
+    image: internetPhoto,
+    accent: "#fb7185",
     stats: { power: 24, magic: 82, mobility: 42, support: 96 },
     abilities: [
       "Быстрое лечение цели с малым расходом маны.",
@@ -122,8 +124,8 @@ export const classes: CharacterClass[] = [
     role: "Улучшение снаряжения, торговля, создание редких предметов.",
     description:
       "Класс для игроков, которые хотят влиять на сервер через экономику, гильдейские заказы и подготовку рейдов.",
-    image: "/images/gallery-04.webp",
-    accent: "#ff9f5a",
+    image: internetPhoto,
+    accent: "#ffb36b",
     stats: { power: 38, magic: 30, mobility: 34, support: 88 },
     abilities: [
       "Качественная ковка с шансом дополнительного свойства.",

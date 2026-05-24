@@ -20,7 +20,7 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.45), 0 0 22px rgba(226,181,58,0.14)" }}
+            whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 22px rgba(94,234,212,0.14)" }}
             transition={{ duration: 0.22 }}
           >
             <button

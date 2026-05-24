@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#0d0d10",
-        night: "#181a20",
-        panel: "#0c0d11",
-        panelSoft: "#11141b",
-        panelLift: "#1b1d24",
+        obsidian: "#071211",
+        night: "#0b2522",
+        panel: "#0a1918",
+        panelSoft: "#102522",
+        panelLift: "#14322e",
         gold: {
-          DEFAULT: "#e2b53a",
-          hover: "#e9c86b",
-          active: "#c09a31"
+          DEFAULT: "#5eead4",
+          hover: "#99f6e4",
+          active: "#2dd4bf"
         }
       },
       fontFamily: {
@@ -25,7 +25,7 @@ const config: Config = {
         rune: ["var(--font-vt323)", "monospace"]
       },
       boxShadow: {
-        pixel: "0 0 0 1px rgba(226,181,58,0.45), 0 0 28px rgba(226,181,58,0.2)",
+        pixel: "0 0 0 1px rgba(94,234,212,0.45), 0 0 28px rgba(94,234,212,0.2)",
         insetPixel: "inset 0 -4px 0 rgba(0,0,0,0.32), inset 0 4px 0 rgba(255,255,255,0.08)"
       },
       backgroundImage: {

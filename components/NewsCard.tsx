@@ -14,7 +14,7 @@ export default function NewsCard({ item }: { item: NewsItem }) {
       viewport={{ once: true, amount: 0.2 }}
       whileHover={{
         y: -3,
-        boxShadow: "0 0 0 1px rgba(226,181,58,0.5), 0 0 28px rgba(226,181,58,0.18)"
+        boxShadow: "0 0 0 1px rgba(94,234,212,0.5), 0 0 28px rgba(94,234,212,0.18)"
       }}
       transition={{ duration: 0.25 }}
     >

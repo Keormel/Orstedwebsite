@@ -2,6 +2,7 @@ import { BookOpen, Flame, Scroll, Stars } from "lucide-react";
 import MotionReveal from "@/components/MotionReveal";
 import PixelButton from "@/components/PixelButton";
 import Section from "@/components/Section";
+import { internetPhoto } from "@/data/media";
 
 const chapters = [
   {
@@ -26,7 +27,7 @@ export default function LorePage() {
     <>
       <section className="mx-auto mt-16 w-full max-w-[1200px] px-4 sm:px-6">
         <MotionReveal className="relative overflow-hidden rounded-[32px] border border-white/10 bg-panel p-8 sm:p-12">
-          <div className="absolute inset-0 bg-[url('/images/gallery-01.jpg')] bg-cover bg-center opacity-25" />
+          <div className="absolute inset-0 bg-cover bg-center opacity-25" style={{ backgroundImage: `url(${internetPhoto})` }} />
           <div className="absolute inset-0 bg-gradient-to-r from-panel via-panel/90 to-transparent" />
           <div className="relative z-10 max-w-3xl">
             <p className="font-rune text-3xl uppercase text-gold">история мира</p>
@@ -45,7 +46,7 @@ export default function LorePage() {
               key={chapter.title}
               delay={index * 0.1}
               className="rounded-[20px] border border-white/10 bg-panel p-6"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.45), 0 0 24px rgba(226,181,58,0.14)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 24px rgba(94,234,212,0.14)" }}
             >
               <chapter.icon className="mb-8 h-9 w-9 text-gold" />
               <h2 className="font-pixel text-sm leading-7 text-white">{chapter.title}</h2>

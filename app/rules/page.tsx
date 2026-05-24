@@ -49,7 +49,7 @@ export default function RulesPage() {
               key={group.title}
               delay={index * 0.1}
               className="rounded-[20px] border border-white/10 bg-panel p-6 sm:p-8"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.45), 0 0 24px rgba(226,181,58,0.14)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 24px rgba(94,234,212,0.14)" }}
             >
               <div className="mb-6 flex items-center gap-4">
                 <ShieldCheck className="h-8 w-8 text-gold" />

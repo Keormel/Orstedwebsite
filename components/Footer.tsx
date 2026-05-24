@@ -1,7 +1,8 @@
 import { Download, ExternalLink, Shield } from "lucide-react";
 import Link from "next/link";
-import PixelButton from "./PixelButton";
+import { internetPhoto } from "@/data/media";
 import MotionReveal from "./MotionReveal";
+import PixelButton from "./PixelButton";
 
 const footerLinks = [
   { href: "/play", label: "Начать игру" },
@@ -14,7 +15,7 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-28 bg-[#0f1014]">
+    <footer className="mt-28 bg-[#081816]">
       <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6">
         <div className="flex flex-wrap items-start gap-12 border-b border-white/15 pb-12">
           <MotionReveal className="flex min-w-[240px] flex-col gap-6">
@@ -47,7 +48,10 @@ export default function Footer() {
         </div>
 
         <div className="grid gap-8 pt-12 lg:grid-cols-[minmax(0,690px)_1fr]">
-          <MotionReveal className="relative hidden h-[331px] overflow-hidden rounded-[20px] bg-panelLift bg-[url('/images/footer-launcher.webp')] bg-cover bg-left-top p-8 md:block">
+          <MotionReveal
+            className="relative hidden h-[331px] overflow-hidden rounded-[20px] bg-panelLift bg-cover bg-left-top p-8 md:block"
+            style={{ backgroundImage: `url(${internetPhoto})` }}
+          >
             <div className="absolute inset-0 bg-gradient-to-r from-panelLift via-panelLift/78 to-transparent" />
             <div className="relative z-10 flex h-full max-w-xs flex-col justify-between">
               <h2 className="font-pixel text-xl leading-[1.6] text-white">
@@ -64,10 +68,7 @@ export default function Footer() {
           </MotionReveal>
 
           <MotionReveal className="flex flex-col justify-end gap-5">
-            <p className="font-rune text-2xl leading-8 text-white/50">
-              Временные изображения находятся в <span className="text-white">public/images</span>. Замените их на
-              финальные арты OrstedProject, сохранив имена файлов.
-            </p>
+            <p className="font-rune text-2xl leading-8 text-white/50">by keormel</p>
             <p className="font-rune text-xl text-white/35">Vercel-ready build: Next.js 14 App Router.</p>
           </MotionReveal>
         </div>

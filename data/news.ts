@@ -1,3 +1,5 @@
+import { internetPhoto } from "./media";
+
 export type NewsItem = {
   slug: string;
   title: string;
@@ -15,7 +17,7 @@ export const news: NewsItem[] = [
       "В тестовую сборку вошли боевые стойки, ранние квесты академии Раноа, базовые классы и первая версия экономики гильдий.",
     date: "21.05.2026",
     category: "Разработка",
-    image: "/images/server-ranoa.jpg"
+    image: internetPhoto
   },
   {
     slug: "reincarnation-start",
@@ -24,7 +26,7 @@ export const news: NewsItem[] = [
       "Игрок сможет выбрать происхождение, стартовый талант и слабость. Эти решения будут влиять на диалоги, обучение и боевые бонусы.",
     date: "18.05.2026",
     category: "Геймплей",
-    image: "/images/gallery-02.webp"
+    image: internetPhoto
   },
   {
     slug: "ranoa-academy",
@@ -33,7 +35,7 @@ export const news: NewsItem[] = [
       "Первые сюжетные события пройдут вокруг экзаменов, дуэлей и поиска редких реагентов для преподавателей академии.",
     date: "14.05.2026",
     category: "События",
-    image: "/images/server-fittoa.jpg"
+    image: internetPhoto
   },
   {
     slug: "guild-orders",
@@ -42,6 +44,6 @@ export const news: NewsItem[] = [
       "Контракты будут связывать ремесленников, боевые отряды и исследователей, чтобы экономика сервера работала через игроков.",
     date: "09.05.2026",
     category: "Экономика",
-    image: "/images/gallery-04.webp"
+    image: internetPhoto
   }
 ];

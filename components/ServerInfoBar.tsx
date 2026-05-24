@@ -30,7 +30,7 @@ export default function ServerInfoBar() {
             hidden: { opacity: 0, y: 22 },
             show: { opacity: 1, y: 0 }
           }}
-          whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.55), 0 0 28px rgba(226,181,58,0.18)" }}
+          whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.55), 0 0 28px rgba(94,234,212,0.18)" }}
           transition={{ duration: 0.25 }}
         >
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[10px] border border-gold/40 bg-gold/10 text-gold">

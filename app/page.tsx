@@ -10,28 +10,29 @@ import Section from "@/components/Section";
 import ServerInfoBar from "@/components/ServerInfoBar";
 import { classes } from "@/data/classes";
 import { faq } from "@/data/faq";
+import { internetPhoto } from "@/data/media";
 import { news } from "@/data/news";
 
 const worlds = [
   {
     title: "Раноа",
     description: "Магическая академия, сюжетные квесты и первые ветки перерождения.",
-    image: "/images/server-ranoa.jpg",
+    image: internetPhoto,
     status: "128 играют"
   },
   {
     title: "Фиттоа",
     description: "Новая ролевая зона с гильдиями, охотой и дорогой начинающего авантюриста.",
-    image: "/images/server-fittoa.jpg",
+    image: internetPhoto,
     status: "скоро"
   }
 ];
 
 const gallery = [
-  { src: "/images/gallery-01.jpg", className: "md:col-span-3 min-h-[360px] sm:min-h-[520px]" },
-  { src: "/images/gallery-02.webp", className: "md:col-span-2 min-h-[320px] sm:min-h-[430px]" },
-  { src: "/images/gallery-03.webp", className: "md:col-span-1 min-h-[320px] sm:min-h-[430px]" },
-  { src: "/images/gallery-04.webp", className: "md:col-span-3 min-h-[360px] sm:min-h-[480px]" }
+  { src: internetPhoto, className: "md:col-span-3 min-h-[360px] sm:min-h-[520px]" },
+  { src: internetPhoto, className: "md:col-span-2 min-h-[320px] sm:min-h-[430px]" },
+  { src: internetPhoto, className: "md:col-span-1 min-h-[320px] sm:min-h-[430px]" },
+  { src: internetPhoto, className: "md:col-span-3 min-h-[360px] sm:min-h-[480px]" }
 ];
 
 const supporters = [
@@ -54,7 +55,7 @@ export default function HomePage() {
             key={world.title}
             delay={index * 0.1}
             className="group relative flex min-h-[520px] overflow-hidden rounded-[20px] border border-white/10 bg-panel"
-            whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.5), 0 0 34px rgba(226,181,58,0.18)" }}
+            whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.5), 0 0 34px rgba(94,234,212,0.18)" }}
             transition={{ duration: 0.25 }}
           >
             <Image src={world.image} alt={world.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 50vw" />
@@ -80,7 +81,7 @@ export default function HomePage() {
             key={item.src}
             delay={index * 0.1}
             className={`group relative overflow-hidden rounded-[20px] border border-white/10 bg-panel ${item.className}`}
-            whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.5), 0 0 28px rgba(226,181,58,0.16)" }}
+            whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.5), 0 0 28px rgba(94,234,212,0.16)" }}
             transition={{ duration: 0.25 }}
           >
             <Image src={item.src} alt="Скриншот OrstedProject" fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 1200px" />
@@ -139,7 +140,7 @@ export default function HomePage() {
               key={item.name}
               delay={index * 0.1}
               className="rounded-[20px] border border-white/10 bg-panelLift p-5"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.5), 0 0 28px rgba(226,181,58,0.18)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.5), 0 0 28px rgba(94,234,212,0.18)" }}
             >
               <div className="mb-8 flex items-center justify-between">
                 <span className="grid h-14 w-14 place-items-center rounded-[12px] border border-gold/45 bg-gold/10 font-pixel text-sm text-gold">
@@ -167,7 +168,7 @@ export default function HomePage() {
               key={name}
               delay={index * 0.1}
               className="flex items-center gap-4 rounded-[16px] border border-white/10 bg-panel px-5 py-4"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.45), 0 0 24px rgba(226,181,58,0.14)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 24px rgba(94,234,212,0.14)" }}
             >
               <span className="grid h-12 w-12 place-items-center rounded-[10px] border border-white/10 bg-white/5 font-pixel text-xs text-gold">
                 {index + 1}

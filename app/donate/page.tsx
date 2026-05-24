@@ -2,6 +2,7 @@ import { Crown, Gem, HeartHandshake, Shield } from "lucide-react";
 import MotionReveal from "@/components/MotionReveal";
 import PixelButton from "@/components/PixelButton";
 import Section from "@/components/Section";
+import { internetPhoto } from "@/data/media";
 
 const packs = [
   {
@@ -26,7 +27,7 @@ export default function DonatePage() {
     <>
       <section className="mx-auto mt-16 w-full max-w-[1200px] px-4 sm:px-6">
         <MotionReveal className="relative overflow-hidden rounded-[32px] border border-white/10 bg-panel p-8 sm:p-12">
-          <div className="absolute inset-0 bg-[url('/images/gallery-04.webp')] bg-cover bg-center opacity-20" />
+          <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: `url(${internetPhoto})` }} />
           <div className="absolute inset-0 bg-gradient-to-r from-panel via-panel/90 to-panel/35" />
           <div className="relative z-10 max-w-3xl">
             <p className="font-rune text-3xl uppercase text-gold">донат</p>
@@ -45,7 +46,7 @@ export default function DonatePage() {
               key={pack.title}
               delay={index * 0.1}
               className="flex min-h-[360px] flex-col rounded-[20px] border border-white/10 bg-panel p-6"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(226,181,58,0.5), 0 0 28px rgba(226,181,58,0.18)" }}
+              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.5), 0 0 28px rgba(94,234,212,0.18)" }}
             >
               <Gem className="mb-8 h-9 w-9 text-gold" />
               <h2 className="font-pixel text-sm text-white">{pack.title}</h2>
