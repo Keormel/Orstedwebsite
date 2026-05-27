@@ -1,19 +1,30 @@
 "use client";
 
-import { Activity, Box, Copy, Server, Users } from "lucide-react";
+import { Activity, Box, Server, Users } from "lucide-react";
 import { motion } from "framer-motion";
-
-const items = [
-  { label: "IP", value: "play.orstedproject.ru", icon: Copy },
-  { label: "Версия", value: "1.20.1", icon: Server },
-  { label: "Модпак", value: "MT RPG Pack", icon: Box },
-  { label: "Онлайн", value: "128 / 300", icon: Users }
-];
+import { useServerStatus } from "@/hooks/useServerStatus";
 
 export default function ServerInfoBar() {
+  const { error, loading, status } = useServerStatus();
+  const onlineValue = loading ? "..." : `${status.onlinePlayers} / ${status.maxPlayers}`;
+  const availabilityText = loading
+    ? "проверка сервера"
+    : status.online
+      ? "сервер доступен"
+      : "сервер недоступен";
+  const availabilityClass = status.online
+    ? "border-emerald-400/20 bg-emerald-400/10 text-emerald-200"
+    : "border-red-400/20 bg-red-400/10 text-red-200";
+
+  const items = [
+    { label: "Версия", value: status.version, icon: Server },
+    { label: "Модпак", value: "MT RPG Pack", icon: Box },
+    { label: "Онлайн", value: onlineValue, icon: Users }
+  ];
+
   return (
     <motion.div
-      className="mx-auto mt-6 grid w-full max-w-[1200px] gap-3 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-5"
+      className="mx-auto mt-6 grid w-full max-w-[1200px] gap-3 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
@@ -37,9 +48,7 @@ export default function ServerInfoBar() {
             <item.icon className="h-5 w-5" />
           </span>
           <span className="min-w-0">
-            <span className="block font-rune text-xl uppercase text-white/40">
-              {item.label}
-            </span>
+            <span className="block font-rune text-xl uppercase text-white/40">{item.label}</span>
             <span className="block break-all font-pixel text-[10px] leading-5 text-white sm:text-xs">
               {item.value}
             </span>
@@ -47,14 +56,15 @@ export default function ServerInfoBar() {
         </motion.div>
       ))}
       <motion.div
-        className="hidden items-center justify-center gap-2 rounded-[14px] border border-emerald-400/20 bg-emerald-400/10 px-5 py-4 font-rune text-2xl text-emerald-200 md:flex"
+        className={`hidden items-center justify-center gap-2 rounded-[14px] border px-5 py-4 font-rune text-2xl md:flex ${availabilityClass}`}
+        title={error || undefined}
         variants={{
           hidden: { opacity: 0, y: 22 },
           show: { opacity: 1, y: 0 }
         }}
       >
         <Activity className="h-5 w-5" />
-        сервер доступен
+        {availabilityText}
       </motion.div>
     </motion.div>
   );

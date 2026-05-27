@@ -8,6 +8,8 @@ import NewsCard from "@/components/NewsCard";
 import PixelButton from "@/components/PixelButton";
 import Section from "@/components/Section";
 import ServerInfoBar from "@/components/ServerInfoBar";
+import ServerOnlineText from "@/components/ServerOnlineText";
+import TopOnlinePlayers from "@/components/TopOnlinePlayers";
 import { classes } from "@/data/classes";
 import { faq } from "@/data/faq";
 import { internetPhoto } from "@/data/media";
@@ -63,7 +65,7 @@ export default function HomePage() {
             <div className="relative z-10 mt-auto flex w-full flex-col items-center gap-5 p-6 text-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 font-rune text-2xl text-white backdrop-blur">
                 <Users className="h-5 w-5 text-white" />
-                {world.status}
+                {index === 0 ? <ServerOnlineText fallback={world.status} /> : world.status}
               </span>
               <h2 className="font-rune text-7xl font-bold leading-none text-white sm:text-8xl">{world.title}</h2>
               <p className="max-w-2xl font-rune text-3xl leading-8 text-white/75">{world.description}</p>
@@ -162,24 +164,7 @@ export default function HomePage() {
       </Section>
 
       <Section className="mt-28" title="Топ по онлайну" eyebrow="активные игроки">
-        <div className="grid gap-4 md:grid-cols-3">
-          {["Ariel_Grayrat", "Silent_Rudeus", "Mana_Scribe"].map((name, index) => (
-            <MotionReveal
-              key={name}
-              delay={index * 0.1}
-              className="flex items-center gap-4 rounded-[16px] border border-white/10 bg-panel px-5 py-4"
-              whileHover={{ y: -3, boxShadow: "0 0 0 1px rgba(94,234,212,0.45), 0 0 24px rgba(94,234,212,0.14)" }}
-            >
-              <span className="grid h-12 w-12 place-items-center rounded-[10px] border border-white/10 bg-white/5 font-pixel text-xs text-gold">
-                {index + 1}
-              </span>
-              <span>
-                <span className="block font-pixel text-xs text-white">{name}</span>
-                <span className="font-rune text-2xl text-white/45">{42 - index * 7} часов за месяц</span>
-              </span>
-            </MotionReveal>
-          ))}
-        </div>
+        <TopOnlinePlayers />
       </Section>
 
       <Section className="mt-28" title="Частые вопросы">
