@@ -8,6 +8,7 @@ const footerLinks = [
   { href: "/classes", label: "Классы" },
   { href: "/lore", label: "Лор" },
   { href: "/news", label: "Новости" },
+  { href: "/auth", label: "Авторизация" },
   { href: "/donate", label: "Донат" }
 ];
 

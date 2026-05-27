@@ -110,7 +110,7 @@ export default function Header() {
             <PixelButton href="/play" variant="outline" icon={<Download className="h-4 w-4" />}>
               Скачать лаунчер
             </PixelButton>
-            <PixelButton href="/play" icon={<User className="h-4 w-4" />}>
+            <PixelButton href="/auth" icon={<User className="h-4 w-4" />}>
               Авторизация
             </PixelButton>
           </div>
@@ -163,7 +163,7 @@ export default function Header() {
               <PixelButton href="/play" variant="outline" icon={<Download className="h-4 w-4" />}>
                 Скачать лаунчер
               </PixelButton>
-              <PixelButton href="/play" icon={<User className="h-4 w-4" />}>
+              <PixelButton href="/auth" icon={<User className="h-4 w-4" />}>
                 Авторизация
               </PixelButton>
             </div>
